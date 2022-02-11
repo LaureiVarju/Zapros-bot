@@ -9,27 +9,18 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Discord
-* ex. Windows 10
-
+*placeholder 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* placeholder
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+*placeholder
 
 ## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
+
 ```
 
 ## Authors

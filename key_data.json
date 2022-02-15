@@ -1,0 +1,83 @@
+{
+    "users": [
+      {
+        "id": 0,
+        "discordid": "225812069704925184",
+        "characters": [
+          {
+            "character_name": "Vizu",
+            "character_class": "Shaman",
+            "weekly_key": "DOS",
+            "key_level": "20",
+            "best_role": "Healer",
+            "second_best_role": "DPS",
+            "region": "Americas & Oceanic",
+            "realm": "Elune"
+          },
+          {
+            "character_name": "Rhiona",
+            "character_class": "Monk",
+            "weekly_key": "PF",
+            "key_level": "8",
+            "best_role": "Healer",
+            "second_best_role": "DPS",
+            "region": "Americas & Oceanic",
+            "realm": "Elune"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "discordid": "222059182445035522",
+        "characters": [
+          {
+            "character_name": "Darkenedone",
+            "character_class": "Death Knight",
+            "weekly_key": "HOA",
+            "key_level": "20",
+            "best_role": "Tank",
+            "second_best_role": "DPS",
+            "region": "Americas & Oceanic",
+            "realm": "Elune"
+          },
+          {
+            "character_name": "Illusion",
+            "character_class": "Mage",
+            "weekly_key": "SD",
+            "key_level": "13",
+            "best_role": "DPS",
+            "second_best_role": "none",
+            "region": "Americas & Oceanic",
+            "realm": "Elune"
+          },
+          {
+            "character_name": "Illspally",
+            "character_class": "Paladin",
+            "weekly_key": "SOA",
+            "key_level": "18",
+            "best_role": "Tank",
+            "second_best_role": "DPS",
+            "region": "Americas & Oceanic",
+            "realm": "Elune"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "discordid": "225812069704925185",
+        "characters": [
+          {
+            "character_name": "Chris",
+            "character_class": "Hunter",
+            "weekly_key": "MISTS",
+            "key_level": "12",
+            "best_role": "Healer",
+            "second_best_role": "Tank",
+            "region": "Americas & Oceanic",
+            "realm": "Alexstrasza"
+          }
+        ]
+      }
+    ]
+  }
+  

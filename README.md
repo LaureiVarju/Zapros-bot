@@ -6,6 +6,8 @@ Zapros-bot is a discord channel bot that interacts with various Warcraft-related
 An in-depth paragraph about your project and overview of use.
 
 ## Getting Started
+Note to self. when adding a new slash command, make sure it's mentioned in deploy-commands.js.
+Run deploy-commands.js after setting the server (guildid) in config.json 
 
 ### Dependencies
 

@@ -7,6 +7,7 @@
           {
             "character_name": "Vizu",
             "character_class": "Shaman",
+            "key_period": 842,
             "weekly_key": "DOS",
             "key_level": "20",
             "best_role": "Healer",
@@ -17,6 +18,7 @@
           {
             "character_name": "Rhiona",
             "character_class": "Monk",
+            "key_period": 842,
             "weekly_key": "PF",
             "key_level": "8",
             "best_role": "Healer",
@@ -33,6 +35,7 @@
           {
             "character_name": "Darkenedone",
             "character_class": "Death Knight",
+            "key_period": 842,
             "weekly_key": "HOA",
             "key_level": "20",
             "best_role": "Tank",
@@ -43,6 +46,7 @@
           {
             "character_name": "Illusion",
             "character_class": "Mage",
+            "key_period": 842,
             "weekly_key": "SD",
             "key_level": "13",
             "best_role": "DPS",
@@ -53,6 +57,7 @@
           {
             "character_name": "Illspally",
             "character_class": "Paladin",
+            "key_period": 842,
             "weekly_key": "SOA",
             "key_level": "18",
             "best_role": "Tank",
@@ -69,6 +74,7 @@
           {
             "character_name": "Chris",
             "character_class": "Hunter",
+            "key_period": 842,
             "weekly_key": "MISTS",
             "key_level": "12",
             "best_role": "Healer",

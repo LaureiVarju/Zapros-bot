@@ -67,19 +67,20 @@ module.exports = {
 		await interaction.reply({ content: 'Pick your preferred role on this character:', components: [row1, row2, row3] });
 		// console.log(interaction)
 
-		client.on('interactionCreate', interaction => {
-			if (!interaction.isButton()) return;
-			// console.log(interaction);
+		// client.on('interactionCreate', interaction => {
+		// 	if (!interaction.isButton()) return;
+		// 	// console.log(interaction);
+		// 	// Nicholai says do something here
 
-			try {
-				console.log("a button was pressed called" + interaction.customId)
-				// await command.execute(interaction);
-			} catch (error) {
-				console.error(error);
-				 interaction.reply({ content: 'error button message', ephemeral: true });
-			}
+		// 	try {
+		// 		console.log("a button was pressed called" + interaction.customId)
+		// 		interaction.reply("you pressed a button!")  // this is new
+		// 	} catch (error) {
+		// 		console.error(error);
+		// 		 interaction.reply({ content: 'error button message', ephemeral: true });
+		// 	}
 
-		});
+		// });
 		// await interaction.reply('you pressed a button');
 		// await interaction.reply(interaction.row.);
 

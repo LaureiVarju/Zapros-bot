@@ -1,20 +1,14 @@
+const { Client, Collection, Intents } = require('discord.js');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
 module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction) {
-		if (!interaction.isCommand()) return;
-
-		const command = 'button'
-
-		if (!command) return;
-
-		try {
-            console.log("in the try block of button")
-			await command.execute(interaction);
-			
-		} catch (error) {
-			console.error(error);
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-		}
+        console.log("inside buttonevent.js")
+		client.on('interactionCreate', interaction => {
+            if (!interaction.isButton()) return;
+            console.log(interaction);
+        });
 
 	},
 };

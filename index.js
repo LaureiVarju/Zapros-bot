@@ -8,7 +8,7 @@ const { readdirSync } = require('node:fs')
 
 const isJs = file => file.endsWith('.js')
 
-interaction.client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path => {
+client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path => {
   const cmd = require(path)
   return [cmd.data.name, cmd]
 }))

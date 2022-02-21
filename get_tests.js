@@ -13,6 +13,8 @@ characterDetails = `https://raider.io/api/v1/characters/profile?region=${region}
 
 
 
+
+
 // // const getPeriod = async () => {
 // //   try {
 // //     return await axios.get(periodAPI)

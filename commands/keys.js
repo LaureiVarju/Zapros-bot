@@ -19,11 +19,10 @@ const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 const userdata = JSON.parse(rawdata);
 const number_of_users = userdata.users.length
 const axios = require('axios')
-// TODO
-// These two API strings should be declared elsewhere and called in, not defined here.
-// also note that I'm using all of the US region-section data for my logic when digging into the results
-const periodAPI = 'https://raider.io/api/v1/periods'
-const affixAPI = 'https://raider.io/api/v1/mythic-plus/affixes?region=us&locale=en'
+const presets = require('../APIpaths');
+const periodAPI = presets.periodAPI
+const affixAPI = presets.affixAPI
+
 
 async function reportAllKeys() {
 

@@ -15,7 +15,7 @@ client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path
 
 client.selectMenus = new Collection(readdirSync('./selectmenus').filter(isJs).map(path => {
     const cmd = require(`./selectmenus/${path}`)
-    return [cmd.data.name, cmd]
+    return [cmd.data.customId, cmd]
 }))
 
 readdirSync('./events').filter(isJs).forEach(path => {

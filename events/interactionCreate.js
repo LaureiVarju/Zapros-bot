@@ -3,6 +3,16 @@ module.exports = {
 	async execute(interaction) {
 
 		if (interaction.isSelectMenu()) {
+
+			if (interaction.customId == "someid") {
+
+
+		
+				// do something here?
+
+			}
+
+			
 			// select menu process
 		} else if (interaction.isCommand()) {
 			// slashie process

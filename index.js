@@ -13,8 +13,8 @@ client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path
     return [cmd.data.name, cmd]
 }))
 
-client.selectMenus = new Collection(readdirSync('./commands').filter(isJs).map(path => {
-    const cmd = require(`./commands/${path}`)
+client.selectMenus = new Collection(readdirSync('./selectmenus').filter(isJs).map(path => {
+    const cmd = require(`./selectmenus/${path}`)
     return [cmd.data.name, cmd]
 }))
 

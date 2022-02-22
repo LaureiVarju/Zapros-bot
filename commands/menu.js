@@ -11,6 +11,12 @@ module.exports = {
 		.setDescription('select two options'),
 	async execute(interaction) {
 
+
+		if( interaction.isSelectMenu()) {
+			// select menu process
+		  } else if (interaction.isCommand()) {
+			// slashie process
+		  }
 		console.log(row.components[0].options[0].value) // DOS
 
 		// interaction.options.getString('input')

@@ -297,6 +297,73 @@ const americas_and_oceanic_realms = [
 "Winterhoof"
 ]
 
+// MessageSelectMenu {
+//     type: 'SELECT_MENU',
+//     customId: 'dungeons',
+//     placeholder: 'Select a dungeon',
+//     minValues: null,
+//     maxValues: null,
+//     options: [
+//       {
+//         label: 'DOS',
+//         value: 'DOS',
+//         description: 'De Other Side',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'HOA',
+//         value: 'HOA',
+//         description: 'Halls of Atonement',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'MISTS',
+//         value: 'MISTS',
+//         description: 'Mists of Tirna Scithe',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'NW',
+//         value: 'NW',
+//         description: 'Necrotic Wake',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'PF',
+//         value: 'PF',
+//         description: 'Plaguefall',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'SD',
+//         value: 'SD',
+//         description: 'Sanguine Depths',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'SOA',
+//         value: 'SOA',
+//         description: 'Spires of Ascension',
+//         emoji: null,
+//         default: false
+//       },
+//       {
+//         label: 'TOP',
+//         value: 'TOP',
+//         description: 'Theater of Pain',
+//         emoji: null,
+//         default: false
+//       }
+//     ],
+//     disabled: false
+//   }
+
 
 exports.roles = roles;
 exports.keystones = keystones;

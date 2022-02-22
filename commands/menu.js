@@ -29,7 +29,7 @@ module.exports = {
 const row = new MessageActionRow()
 			.addComponents(
 				new MessageSelectMenu()
-					.setCustomId('dungeons')
+					.setCustomId('someid')
 					.setPlaceholder('Select a dungeon')
 					.addOptions([
 						{

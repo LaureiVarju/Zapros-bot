@@ -1,7 +1,7 @@
 
 module.exports = {
     customId: "someid",
-    execute(interaction) => {
+    execute(interaction)  {
       interaction.reply("hello")
     }
   }

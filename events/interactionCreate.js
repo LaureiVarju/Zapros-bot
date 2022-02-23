@@ -4,8 +4,8 @@ module.exports = {
 
 		if (interaction.isSelectMenu()) {
 			console.log("In the interaction.selectMenu() is true block")
-			console.log("interaction.customId is " + interaction.customId)
-			console.log( "interaction.client.selectMenus is: " + JSON.stringify(interaction.client.selectMenus))
+			// console.log("interaction.customId is " + interaction.customId)
+			// console.log( "interaction.client.selectMenus is: " + JSON.stringify(interaction.client.selectMenus))
 			const command = interaction.client.selectMenus.get(interaction.customId);
 			if (!command) return;
 			try {

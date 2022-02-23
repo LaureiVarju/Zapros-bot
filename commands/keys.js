@@ -21,6 +21,7 @@ const axios = require('axios')
 const presets = require('../APIpaths');
 const periodAPI = presets.periodAPI
 const affixAPI = presets.affixAPI
+const us_region = 0
 
 
 async function reportAllKeys() {
@@ -37,7 +38,7 @@ async function reportAllKeys() {
 			// console.log('value of y is ' + y)
 			async function getPeriodNumber() { // we need an async wrapper here to handle our API calls
 				const res = await axios.get(periodAPI)
-				const current_period = res.data.periods[0].current.period
+				const current_period = res.data.periods[us_region].current.period
 				const last_recorded_character_key_period = userdata.users[i].characters[y].key_period
 				const character_name = userdata.users[i].characters[y].character_name
 				const weekly_key = userdata.users[i].characters[y].weekly_key
@@ -72,8 +73,8 @@ async function reportAllKeys() {
 			async function postProcessArray() {
 				// Adding weekly date range
 				const week_dates_call = await axios.get(periodAPI)
-				const beginning_date = moment(week_dates_call.data.periods[0].current.start).format('MMM Do')
-				const ending_date = moment(week_dates_call.data.periods[0].current.end).format('MMM Do')
+				const beginning_date = moment(week_dates_call.data.periods[us_region].current.start).format('MMM Do')
+				const ending_date = moment(week_dates_call.data.periods[us_region].current.end).format('MMM Do')
 				character_array.unshift(`Keys for the week of: ${beginning_date} - ${ending_date}`)
 
 				//Adding weekly affixes

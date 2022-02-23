@@ -2,78 +2,88 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 
+
+
 module.exports = {
 
-	
-	
 	data: new SlashCommandBuilder()
 		.setName('menu')
 		.setDescription('select two options'),
+
 	async execute(interaction) {
+		console.log("inside async execute block of menu.js")
 
 
-	
-		console.log(row.components[0].options[0].value) // DOS
+
+
+
+		// console.log(row.components[0].options[0].value) // DOS
 
 		// interaction.options.getString('input')
 
-		if (interaction.customId === 'select'){
-		console.log('select was picked')
+		if (interaction.customId === 'select') {
+			console.log('select was picked')
 		}
-		await interaction.reply({ content: 'Pick something!', components: [row, row2] });
+		await interaction.reply({ content: 'Pick something!', ephemeral: true, components: [row] });
+		// await interaction.reply({ content: 'Pick something!', ephemeral: true, components: [row] });
+
+		// await interaction.reply({ content: 'Pong!', ephemeral: true, embeds: [embed], components: [row] });
 		// return interaction.reply( this.row);
 	},
 };
 
 
+
+
 const row = new MessageActionRow()
-			.addComponents(
-				new MessageSelectMenu()
-					.setCustomId('someid')
-					.setPlaceholder('Select a dungeon')
-					.addOptions([
-						{
-							label: 'DOS',
-							description: 'De Other Side',
-							value: 'DOS',
-						},
-						{
-							label: 'HOA',
-							description: 'Halls of Atonement',
-							value: 'HOA',
-						},
-						{
-							label: 'MISTS',
-							description: 'Mists of Tirna Scithe',
-							value: 'MISTS',
-						},
-						{
-							label: 'NW',
-							description: 'Necrotic Wake',
-							value: 'NW',
-						},
-						{
-							label: 'PF',
-							description: 'Plaguefall',
-							value: 'PF',
-						},
-						{
-							label: 'SD',
-							description: 'Sanguine Depths',
-							value: 'SD',
-						},
-						{
-							label: 'SOA',
-							description: 'Spires of Ascension',
-							value: 'SOA',
-						},
-						{
-							label: 'TOP',
-							description: 'Theater of Pain',
-							value: 'TOP',
-						},
-					]),
-			);
+	.addComponents(
+		new MessageSelectMenu()
+			.setCustomId('someid')
+			.setPlaceholder('Select a dungeon')
+			.addOptions([
+				{
+					label: 'DOS',
+					description: 'De Other Side',
+					value: 'DOS',
+				},
+				{
+					label: 'HOA',
+					description: 'Halls of Atonement',
+					value: 'HOA',
+				},
+				{
+					label: 'MISTS',
+					description: 'Mists of Tirna Scithe',
+					value: 'MISTS',
+				},
+				{
+					label: 'NW',
+					description: 'Necrotic Wake',
+					value: 'NW',
+				},
+				{
+					label: 'PF',
+					description: 'Plaguefall',
+					value: 'PF',
+				},
+				{
+					label: 'SD',
+					description: 'Sanguine Depths',
+					value: 'SD',
+				},
+				{
+					label: 'SOA',
+					description: 'Spires of Ascension',
+					value: 'SOA',
+				},
+				{
+					label: 'TOP',
+					description: 'Theater of Pain',
+					value: 'TOP',
+				},
+			]),
+	);
+
 const row2 = new MessageActionRow()
 	.addComponents(
 		new MessageSelectMenu()
@@ -200,20 +210,6 @@ const row2 = new MessageActionRow()
 					// description: 'Theater of Pain',
 					value: '25',
 				},
-			
+
 			]),
 	);
-
-
-
-
-// client.on('interactionCreate', async interaction => {
-// 	if (!interaction.isCommand()) return;
-
-// 	if (interaction.commandName === 'ping') {
-// 		const row = new MessageActionRow()
-			
-
-// 		await interaction.reply
-// 	}
-// });

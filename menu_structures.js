@@ -3,9 +3,9 @@ console.log('inside menu structres')
 const helpers = require('./helpers.js');
 const createCharacterArrayForMenu = helpers.createCharacterArrayForMenu
 
-console.log(await createCharacterArrayForMenu())
+// console.log(createCharacterArrayForMenu(interaction.user.id))
 
-const { MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { MessageActionRow, MessageSelectMenu, Base } = require('discord.js');
 const menutest2 = new MessageActionRow()
     .addComponents(
         new MessageSelectMenu()
@@ -33,17 +33,18 @@ const menutest2 = new MessageActionRow()
     );
 
 
-    // const character_menu_array = new MessageActionRow()
-    // .addComponents(
-    //     new MessageSelectMenu()
-    //         .setCustomId('characters')
-    //         .setPlaceholder('Select a character to update key data')
-    //         .addOptions(await createCharacterArrayForMenu())
-    // );
+    const character_menu_array = new MessageActionRow()
+    .addComponents(
+        new MessageSelectMenu()
+            .setCustomId('characters')
+            .setPlaceholder('Select a character to update key data')
+            .addOptions( createCharacterArrayForMenu(Base.user.id) )
+    );
     
+    // JSON.stringify(createCharacterArrayForMenu())
   
 exports.menutest2 = menutest2
-// exports.character_menu_array = character_menu_array
+exports.character_menu_array = character_menu_array
 
 //helpers.js
 //*

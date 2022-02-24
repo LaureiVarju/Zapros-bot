@@ -1,26 +1,34 @@
 //TODO
-// keep exploring menus
-// Fix the key level problem with the menus
-// Use the echo method for base MVP functionality because it's the easiest.
-
-// Work on string matching
+// get discord id to work
+// Work on string matching... maybe have something for local testing. do that first
 console.log("inside helpers")
+
+
+const discord = require('discord.js');
 
 const fs = require('fs');
 const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 const userdata = JSON.parse(rawdata);
 const number_of_users = userdata.users.length
-let userid = '225812069704925184'
-// let userid = interaction.user.id
-const discordId = (element) => element == '225812069704925184'
+// let userid = '100'
+// let userid = discord.interaction.user.id
+// const discordId = (element) => element == userid
+// let userid = '100'
 // const discordId = (element) => element == interaction.user.id;
 
+// if (discord.user.id != undefined || null){
+//   userid = discord.user.id
+// }
 
-async function createCharacterArrayForMenu() {
+
+
+ function createCharacterArrayForMenu(userid) {
+   console.log('value of userid ' + userid)
   console.log("inside createCharacterArrayForMenu()")
+  const discordId = (element) => element == userid
 
 
-  if (await createUserArray().includes('225812069704925184') == true) {
+  if (createUserArray().includes(userid) == true) {
   // if (createUserArray().includes(interaction.user.id) == true) {
 
     // console.log('you exist!')
@@ -44,7 +52,8 @@ async function createCharacterArrayForMenu() {
       let row_data = {
         label: JSON.stringify(character_name + '-' + realm + ' ' + '(' + character_class + ')').replace(/"/g, ''),
         name: JSON.stringify(character_name).replace(/"/g, ''),
-        realm: JSON.stringify(realm).replace(/"/g, '')
+        realm: JSON.stringify(realm).replace(/"/g, ''),
+        value: JSON.stringify(character_name + '|' + realm).replace(/"/g, '') //this value property is redundant but we NEED it or the discordjs menu component won't work
       }
       // row_data = JSON.stringify(character_name + '-' + realm + ' ' + '(' + character_class + ')')
       // cleaned_string = row_data.label.replace(/"/g, '')
@@ -72,7 +81,7 @@ async function createCharacterArrayForMenu() {
  
 
 //helper functions
-async function createUserArray() {
+function createUserArray() {
   console.log("inside CreateUserArray of")
   let user_array = []
   //outer loop i is set by our overall user level
@@ -92,6 +101,7 @@ async function createUserArray() {
   }
 }
 
+createCharacterArrayForMenu('150')
 // console.log(createCharacterArrayForMenu())
 
 exports.createCharacterArrayForMenu = createCharacterArrayForMenu;

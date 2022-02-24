@@ -9,8 +9,13 @@ const { readdirSync } = require('node:fs')
 const isJs = file => file.endsWith('.js')
 
 client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path => {
-	const cmd = require(`./commands/${path}`)
-	return [cmd.data.name, cmd]
+    const cmd = require(`./commands/${path}`)
+    return [cmd.data.name, cmd]
+}))
+
+client.selectMenus = new Collection(readdirSync('./selectmenus').filter(isJs).map(path => {
+    const cmd = require(`./selectmenus/${path}`)
+    return [cmd.customId, cmd]
 }))
 
 readdirSync('./events').filter(isJs).forEach(path => {

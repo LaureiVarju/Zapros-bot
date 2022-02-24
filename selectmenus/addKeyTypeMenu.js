@@ -1,52 +1,37 @@
 
 const presets = require('../presets');
 const key_menu = presets.key_menu
-const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
-let interaction_array = []
 
 const key_type_menu = new MessageActionRow()
 .addComponents(
     new MessageSelectMenu()
-        .setCustomId('key-type')
-        // .setCustomId('characters')
+        .setCustomId('key-name')
         .setPlaceholder('None')
         .addOptions(key_menu)
 );
 module.exports = {
-    customId: "someid", // this customId property is crucial for this component to BE reached from menu.js where it is set and emitted
-
-
+    customId: "characterSelected", // this customId property is crucial for this component to BE reached from update.js where it is set and emitted
    
 	async execute(interaction) {
-
    
-        interaction_array.push(interaction.values)
-        // console.log('the user chose[]  as their character')
-        console.log(interaction_array)
-        
-        
-		await interaction.update({ content: 'Choose a key for this characer', selection: interaction.values, ephemeral: true, components: [key_type_menu]  });
+       let character_selected = interaction.values
+	    await interaction.update({ content: `Choose a key for: ${character_selected}`, ephemeral: true, components: [key_type_menu]  });
 
 	},
 
     
 };
 
-
-// const row = new MessageActionRow()
-// 	.addComponents(
-// 		new MessageSelectMenu()
-// 			.setCustomId('someid')
-// 			.setPlaceholder('Select a dungeon')
-// 			.addOptions(key_menu),
-// 	);
-
-
-
-
-
-
+// data: new SlashCommandBuilder()
+// 	.setName('echo')
+// 	.setDescription('Replies with your input!')
+// 	.addStringOption(option => option.setName('input').setDescription('The input to echo back').setRequired(true)),
+// 	async execute(interaction) {
+// 		// const user = interaction.options.getUser('target');
+// 		console.log(interaction.user.id)
+// 		console.log(interaction.user.username)
+// 		return interaction.reply(interaction.options.getString('input'));
 
 
 

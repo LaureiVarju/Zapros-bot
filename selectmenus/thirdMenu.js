@@ -4,24 +4,32 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 module.exports = {
-    // commandName: "keylevel", // this customId property is crucial for this component to BE reached from menu.js where the custom id is set
-	customId: "key-type", 
+ 
+	customId: "key-name", //this customId is read here, and emitted by ./selectmenus/addKeyTypeMenu.js 
 
 
-	// data: new SlashCommandBuilder()
-	// 	.setName('report')
-	// 	.setDescription('Replies with your input!')
-	// 	.addStringOption(option => option.setName('input').setDescription('The input to echo back').setRequired(true)),
+	data: new SlashCommandBuilder()
+	.setName('key-level-amt')
+	.setDescription('Replies with your input!')
+	.addStringOption(option => option.setName('your key level').setDescription('must be a number between 2-100').setRequired(true)),
 		async execute(interaction) {
 
 			
-			console.log(interaction)
-			// console.log(interaction.selection)
-			// const user = interaction.options.getUser('target');
-			// console.log(interaction.user.id)
-			// console.log(interaction.user.username)
-			return interaction.reply(`Your key is ${interaction.values} your character is ${interaction.selection} (inside thirdMenu.js)`);
+			console.log(interaction.values[0])
 			
+			let charname_and_realm = interaction.message.content.split(':')[1].trim()
+			let realm = interaction.message.content.split('-')[1].trim()
+			let charname = interaction.message.content.split(':')[1].split('-')[0].trim()
+			
+
+			console.log("charname_and_realm = "+charname_and_realm)
+			console.log("realm  = " + realm)
+			console.log("charname  = " + charname)
+			console.log("key name = " + interaction.values)
+
+					// return interaction.reply(interaction.options.getString('input'));
+					return interaction.reply({content: `Your key is ${interaction.values} your character is ${charname_and_realm}`, ephemeral: true});
+					
 		},
 
     
@@ -29,7 +37,15 @@ module.exports = {
 
 
 
+// interaction.options.getString('input')
 
+// async execute(interaction) {
+//     // const user = interaction.options.getUser('target');
+//     console.log(interaction.user.id)
+//     console.log(interaction.user.username)
+//     return interaction.reply(interaction.options.getString('input'));
+    
+// },
 
 
 

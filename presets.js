@@ -335,13 +335,13 @@ const key_menu =
         value: 'SOA',
     },
     {
-        label: 'TAZ:SG',
+        label: 'TAZ: SG',
         description: "Tazavesh: So'leah's Gambit",
         value: 'TAZ:SG',
     },
     {
-        label: 'TAZ:SW',
-        description: 'Tazavesh:Streets of Wonder',
+        label: 'TAZ: SW',
+        description: 'Tazavesh: Streets of Wonder',
         value: 'TAZ:SW',
     }
 ]

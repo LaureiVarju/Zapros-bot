@@ -1,46 +1,31 @@
 
-const presets = require('../presets');
-const key_menu = presets.key_menu
+
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageSelectMenu } = require('discord.js');
-let interaction_array = []
 
-const key_type_menu = new MessageActionRow()
-.addComponents(
-    new MessageSelectMenu()
-        .setCustomId('key-type')
-        // .setCustomId('characters')
-        .setPlaceholder('None')
-        .addOptions(key_menu)
-);
 module.exports = {
-    customId: "someid", // this customId property is crucial for this component to BE reached from menu.js where it is set and emitted
+    // commandName: "keylevel", // this customId property is crucial for this component to BE reached from menu.js where the custom id is set
+	customId: "key-type", 
 
 
-   
-	async execute(interaction) {
+	// data: new SlashCommandBuilder()
+	// 	.setName('report')
+	// 	.setDescription('Replies with your input!')
+	// 	.addStringOption(option => option.setName('input').setDescription('The input to echo back').setRequired(true)),
+		async execute(interaction) {
 
-   
-        interaction_array.push(interaction.values)
-        // console.log('the user chose[]  as their character')
-        console.log(interaction_array)
-        
-        
-		await interaction.update({ content: 'Choose a key for this characer', selection: interaction.values, ephemeral: true, components: [key_type_menu]  });
-
-	},
+			
+			console.log(interaction)
+			// console.log(interaction.selection)
+			// const user = interaction.options.getUser('target');
+			// console.log(interaction.user.id)
+			// console.log(interaction.user.username)
+			return interaction.reply(`Your key is ${interaction.values} your character is ${interaction.selection} (inside thirdMenu.js)`);
+			
+		},
 
     
 };
-
-
-// const row = new MessageActionRow()
-// 	.addComponents(
-// 		new MessageSelectMenu()
-// 			.setCustomId('someid')
-// 			.setPlaceholder('Select a dungeon')
-// 			.addOptions(key_menu),
-// 	);
 
 
 

@@ -92,7 +92,6 @@ const americas_and_oceanic_realms = [
 "Blackwing Lair",
 "Blade's Edge",
 "Bladefist",
-
 "Bleeding Hollow",
 "Blood Furnace",
 "Bloodhoof",
@@ -298,9 +297,60 @@ const americas_and_oceanic_realms = [
 "Winterhoof"
 ]
 
+const key_menu =
+[
+    {
+        label: 'DOS',
+        description: 'De Other Side',
+        value: 'DOS',
+    },
+    {
+        label: 'HOA',
+        description: 'Halls of Atonement',
+        value: 'HOA',
+    },
+    {
+        label: 'MISTS',
+        description: 'Mists of Tirna Scithe',
+        value: 'MISTS',
+    },
+    {
+        label: 'NW',
+        description: 'Necrotic Wake',
+        value: 'NW',
+    },
+    {
+        label: 'PF',
+        description: 'Plaguefall',
+        value: 'PF',
+    },
+    {
+        label: 'SD',
+        description: 'Sanguine Depths',
+        value: 'SD',
+    },
+    {
+        label: 'SOA',
+        description: 'Spires of Ascension',
+        value: 'SOA',
+    },
+    {
+        label: 'TAZ:SG',
+        description: "Tazavesh: So'leah's Gambit",
+        value: 'TAZ:SG',
+    },
+    {
+        label: 'TAZ:SW',
+        description: 'Tazavesh:Streets of Wonder',
+        value: 'TAZ:SW',
+    }
+]
+
+
 exports.roles = roles;
 exports.keystones = keystones;
 exports.affixes = affixes;
 exports.classes = classes;
 exports.regions = regions;
 exports.americas_and_oceanic_realms = americas_and_oceanic_realms;
+exports.key_menu = key_menu;

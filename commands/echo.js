@@ -15,9 +15,12 @@ module.exports = {
 		console.log(interaction.options._hoistedOptions)
 
 		let key_level =  interaction.options._hoistedOptions[3].value
+		let key_name = interaction.options._hoistedOptions[2].value
+		let realm_name =  interaction.options._hoistedOptions[1].value
+		let character_name = interaction.options._hoistedOptions[1].value
 		console.log(key_level)
 
-		return interaction.reply(interaction.options.getString('character'));
+		return interaction.reply({ content: `Key settings for ${character_name}-${realm_name}have been updated`, ephemeral: true})
 		
 	},
 };

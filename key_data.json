@@ -69,13 +69,24 @@
       },
       {
         "id": 2,
-        "discordid": "100",
+        "discordid": "754279952647716914",
         "characters": [
           {
-            "character_name": "Chris",
+            "character_name": "Mister Ben",
             "character_class": "Hunter",
             "key_period": 843,
             "weekly_key": "MISTS",
+            "key_level": 12,
+            "best_role": "Healer",
+            "second_best_role": "Tank",
+            "region": "Americas & Oceanic",
+            "realm": "Alexstrasza"
+          },
+          {
+            "character_name": "Mister Jamming",
+            "character_class": "Mage",
+            "key_period": 843,
+            "weekly_key": "HoA",
             "key_level": 12,
             "best_role": "Healer",
             "second_best_role": "Tank",

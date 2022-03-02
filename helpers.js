@@ -1,190 +1,56 @@
-// SelectMenuInteraction {
-//     type: 'MESSAGE_COMPONENT',
-//     id: '946515499657863259',
-//     applicationId: '940009232730837053',
-//     channelId: '936751708837658629',
-//     guildId: '936751708837658625',
-//     user: User {
-//       id: '225812069704925184',
-//       bot: false,
-//       system: false,
-//       flags: UserFlags { bitfield: 0 },
-//       username: 'Rhiona/Vizu',
-//       discriminator: '8868',
-//       avatar: '2ecf8dee54ad7896c7fbb951ad70fbaa',
-//       banner: undefined,
-//       accentColor: undefined
-//     },
-//     member: GuildMember {
-//       guild: Guild {
-//         id: '936751708837658625',
-//         name: "Rhiona/Vizu's server",
-//         icon: null,
-//         features: [],
-//         commands: [GuildApplicationCommandManager],
-//         members: [GuildMemberManager],
-//         channels: [GuildChannelManager],
-//         bans: [GuildBanManager],
-//         roles: [RoleManager],
-//         presences: PresenceManager {},
-//         voiceStates: [VoiceStateManager],
-//         stageInstances: [StageInstanceManager],
-//         invites: [GuildInviteManager],
-//         scheduledEvents: [GuildScheduledEventManager],
-//         available: true,
-//         shardId: 0,
-//         splash: null,
-//         banner: null,
-//         description: null,
-//         verificationLevel: 'NONE',
-//         vanityURLCode: null,
-//         nsfwLevel: 'DEFAULT',
-//         discoverySplash: null,
-//         memberCount: 3,
-//         large: false,
-//         premiumProgressBarEnabled: false,
-//         applicationId: null,
-//         afkTimeout: 300,
-//         afkChannelId: null,
-//         systemChannelId: '936751708837658629',
-//         premiumTier: 'NONE',
-//         premiumSubscriptionCount: 0,
-//         explicitContentFilter: 'DISABLED',
-//         mfaLevel: 'NONE',
-//         joinedTimestamp: 1644188602687,
-//         defaultMessageNotifications: 'ALL_MESSAGES',
-//         systemChannelFlags: [SystemChannelFlags],
-//         maximumMembers: 500000,
-//         maximumPresences: null,
-//         approximateMemberCount: null,
-//         approximatePresenceCount: null,
-//         vanityURLUses: null,
-//         rulesChannelId: null,
-//         publicUpdatesChannelId: null,
-//         preferredLocale: 'en-US',
-//         ownerId: '225812069704925184',
-//         emojis: [GuildEmojiManager],
-//         stickers: [GuildStickerManager]
-//       },
-//       joinedTimestamp: 1643409411408,
-//       premiumSinceTimestamp: null,
-//       nickname: null,
-//       pending: false,
-//       communicationDisabledUntilTimestamp: null,
-//       _roles: [],
-//       user: User {
-//         id: '225812069704925184',
-//         bot: false,
-//         system: false,
-//         flags: [UserFlags],
-//         username: 'Rhiona/Vizu',
-//         discriminator: '8868',
-//         avatar: '2ecf8dee54ad7896c7fbb951ad70fbaa',
-//         banner: undefined,
-//         accentColor: undefined
-//       },
-//       avatar: null
-//     },
-//     version: 1,
-//     memberPermissions: Permissions { bitfield: 2199023255551n },
-//     locale: 'en-US',
-//     guildLocale: 'en-US',
-//     message: <ref *1> Message {
-//       channelId: '936751708837658629',
-//       guildId: '936751708837658625',
-//       id: '946515480192098364',
-//       createdTimestamp: 1645737275885,
-//       type: 'APPLICATION_COMMAND',
-//       system: false,
-//       content: 'Choose a key for Rhiona-Elune',
-//       author: ClientUser {
-//         id: '940009232730837053',
-//         bot: true,
-//         system: false,
-//         flags: [UserFlags],
-//         username: 'Zapros',
-//         discriminator: '8178',
-//         avatar: '1d8568dc55e2bac377ca1f47c96335b1',
-//         banner: undefined,
-//         accentColor: undefined,
-//         verified: true,
-//         mfaEnabled: false
-//       },
-//       pinned: false,
-//       tts: false,
-//       nonce: null,
-//       embeds: [],
-//       components: [ [MessageActionRow] ],
-//       attachments: Collection(0) [Map] {},
-//       stickers: Collection(0) [Map] {},
-//       editedTimestamp: 1645737278988,
-//       reactions: ReactionManager { message: [Circular *1] },
-//       mentions: MessageMentions {
-//         everyone: false,
-//         users: Collection(0) [Map] {},
-//         roles: Collection(0) [Map] {},
-//         _members: null,
-//         _channels: null,
-//         crosspostedChannels: Collection(0) [Map] {},
-//         repliedUser: null
-//       },
-//       webhookId: '940009232730837053',
-//       groupActivityApplication: null,
-//       applicationId: '940009232730837053',
-//       activity: null,
-//       flags: MessageFlags { bitfield: 64 },
-//       reference: null,
-//       interaction: {
-//         id: '946515479252574259',
-//         type: 'APPLICATION_COMMAND',
-//         commandName: 'update',
-//         user: [User]
-//       }
-//     },
-//     customId: 'key-name',
-//     componentType: 'SELECT_MENU',
-//     deferred: false,
-//     ephemeral: null,
-//     replied: false,
-//     webhook: InteractionWebhook { id: '940009232730837053' },
-//     values: [ 'MISTS' ]
-//   }
+// Helper function that creates an array of all user ids ie: ["225812069704925184", "222059182445035522"]
+// createCharacterArrayForMenu() in update.js uses the return value of createUserIdArray() to determine if the user exists in the JSON file, and if so, where
+function createUserIdArray(number_of_users, userdata) {
+	// console.log("inside CreateUserArray of")
+	let user_array = []
+	//outer loop i is set by our overall user level
+	for (let i = 0; i < number_of_users; i++) {
+		row_data = JSON.stringify(userdata.users[i].discordid)
+		cleaned_string = row_data.replace(/"/g, '')
+		user_array.push(cleaned_string)
+		//if we reach this part of the loop, we're done
+		if (i == number_of_users - 1) {
+			// console.log("returning from CreateUserArray")
+			return user_array
+		}
+	}
+}
 
+// we can assume when this is called, that the user DOES exist and DOES have characters 
+function findCharacterIndex(userid, data, character_name, realm_name) {
 
-//I have a chain of events that has a menu update itself with new options after a selection is emitted. However, I'm not sure how to store the selected value after one jump
-// FILE A
-const character_menu = new MessageActionRow()
-    .addComponents(
-        new MessageSelectMenu()
-            .setCustomId('characterSelected')  // emitting information to FILE B with this ID
-            .setPlaceholder('Select Your Character')
-            .addOptions(createCharacterArrayForMenu(interaction.user.id))
-    );
- // ...
-interaction.reply({ content: 'Select a character to update their key data!', components: [character_menu], ephemeral: true }); // interaction being sent to B
+	const discordId = (element) => element == userid
 
-// FILE B
-const key_type_menu = new MessageActionRow()
-    .addComponents(
-        new MessageSelectMenu()
-            .setCustomId('key-name') // emitting information to FILE C
-            .setPlaceholder('None')
-            .addOptions(key_menu)
-    );
-module.exports = {
-    customId: "characterSelected",// receiving character information here as interaction.values from FILE A
-    async execute(interaction) {
-        let character_selected = interaction.values
-        await interaction.update({ content: `Choose a key for: ${character_selected}`, ephemeral: true, components: [key_type_menu] }); //sending a new interaction to FILE C
-    },
-};
-///
+		let character_array = []
 
-///FILE C
-module.exports = {
-    customId: "key-name", //reading in information from FILE B
-    async execute(interaction) {
-           console.log(interaction.values) //Only has information from FILE B... not sure how to retain/reach information from A to this point
-    },
-};
+    let index = fruits.indexOf("Apple", 3);
 
+		for (let y = 0; y < userdata.users[user_index].characters.length; y++) {
+			// console.log('value of y is ' + y)
+			const character_name = userdata.users[user_index].characters[y].character_name
+			const realm = userdata.users[user_index].characters[y].realm
+			const character_class = userdata.users[user_index].characters[y].character_class
+
+			let row_data = {
+				label: JSON.stringify(character_name + '-' + realm + ' ' + '(' + character_class + ')').replace(/"/g, ''),
+				// this value property is somewhat redundant but we NEED it or the discordjs menu component won't work. It also HAS to be a string
+				value: JSON.stringify(character_name + '-' + realm).replace(/"/g, '')
+			}
+
+			character_array.push(row_data)
+
+			//if we reach this part of the loop, we're done
+			if (y == userdata.users[user_index].characters.length - 1) {
+				return character_array
+			}
+		}
+		/// end of array logic
+
+	} else {
+		console.log("no record for this user exists")
+		character_array = [{ label: 'NULL', value: 'NULL' }]
+		return character_array
+	}
+}
+
+exports.createUserIdArray = createUserIdArray;

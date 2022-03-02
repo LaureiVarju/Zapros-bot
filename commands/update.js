@@ -1,4 +1,3 @@
-
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageActionRow, MessageSelectMenu } = require('discord.js')
 const fs = require('fs');
@@ -6,14 +5,19 @@ const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 const userdata = JSON.parse(rawdata);
 const number_of_users = userdata.users.length
 
+const helpers = require('../helpers');
+const createUserIdArray = helpers.createUserIdArray
+
+//may need to be refactored. this needs the number of users, and the data, 
+
 function createCharacterArrayForMenu(userid) {
 	console.log('value of userid ' + userid)
 	// console.log("inside createCharacterArrayForMenu()")
 	const discordId = (element) => element == userid
 
-	if (createUserIdArray().includes(userid) == true) {
+	if (createUserIdArray(number_of_users, userdata, userid).includes(userid) == true) {
 
-		let user_index = createUserIdArray().findIndex(discordId)
+		let user_index = createUserIdArray(number_of_users, userdata, userid).findIndex(discordId)
 		let character_array = []
 
 		for (let y = 0; y < userdata.users[user_index].characters.length; y++) {
@@ -44,29 +48,11 @@ function createCharacterArrayForMenu(userid) {
 	}
 }
 
-// Helper function that creates an array of all user ids ie: ["225812069704925184", "222059182445035522"]
-// createCharacterArrayForMenu() uses the return value of createUserIdArray() to determine if the user exists in the JSON file, and if so, where
-function createUserIdArray() {
-	// console.log("inside CreateUserArray of")
-	let user_array = []
-	//outer loop i is set by our overall user level
-	for (let i = 0; i < number_of_users; i++) {
-		row_data = JSON.stringify(userdata.users[i].discordid)
-		cleaned_string = row_data.replace(/"/g, '')
-		user_array.push(cleaned_string)
-		//if we reach this part of the loop, we're done
-		if (i == number_of_users - 1) {
-			// console.log("returning from CreateUserArray")
-			return user_array
-		}
-	}
-}
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('update')
 		.setDescription("Update your character's key data"),
-
+		
 	async execute(interaction) {
 		console.log("inside async execute block of menu.js")
 
@@ -75,7 +61,7 @@ module.exports = {
 				new MessageSelectMenu()
 					.setCustomId('characterSelected')
 					.setPlaceholder('Select Your Character')
-					.addOptions(createCharacterArrayForMenu(interaction.user.id))
+					.addOptions(createCharacterArrayForMenu(interaction.user.id)),
 			);
 
 

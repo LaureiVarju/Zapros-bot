@@ -445,8 +445,8 @@ const key_level_menu =
         value: '25',
     },
     {  
-        label: '+26',
-        value: '26',
+        label: '(My key is greater than 25)',
+        value: '25+++',
     }
     
 ]

@@ -1,15 +1,20 @@
 
 const presets = require('../presets');
+
 const key_menu = presets.key_menu
+
+
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 const key_type_menu = new MessageActionRow()
 .addComponents(
     new MessageSelectMenu()
         .setCustomId('key-name')
-        .setPlaceholder('None')
+        .setPlaceholder('Select a key')
         .addOptions(key_menu)
 );
+
+
 module.exports = {
     customId: "characterSelected", // this customId property is crucial for this component to BE reached from update.js where it is set and emitted
    

@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction) {
 		let results = await reportAllKeys() //returns an object
 		const array_results = Object.values(results); //turns the object into an array so I can call .join() on the results for better formatting
-		return interaction.reply({ content: array_results.join('\n'), ephemeral: false })
+		return interaction.reply({ content: array_results.join('\n'), ephemeral: true })
 	}
 };
 

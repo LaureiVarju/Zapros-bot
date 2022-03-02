@@ -22,8 +22,8 @@ const rest = new REST({ version: '9' }).setToken(token);
 		console.log('Started refreshing application (/) commands.');
 
 		await rest.put(
-			// Routes.applicationCommands(clientId), // Global
-            Routes.applicationGuildCommands(clientId, guildId), -- Guild (server only)
+			// Routes.applicationCommands(clientId), // Global, so every instance that the bot exists at?
+            Routes.applicationGuildCommands(clientId, guildId), 
 			{ body: commands },
 		);
 

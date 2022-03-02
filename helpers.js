@@ -16,41 +16,40 @@ function createUserIdArray(number_of_users, userdata) {
 	}
 }
 
-// we can assume when this is called, that the user DOES exist and DOES have characters 
-function findCharacterIndex(userid, data, character_name, realm_name) {
+// // we can assume when this is called, that the user DOES exist and DOES have characters 
+// function findCharacterIndex(userid, data, character_name, realm_name) {
 
-	const discordId = (element) => element == userid
 
-		let character_array = []
+//     let indexOfUser = data.indexOf(userid)
 
-    let index = fruits.indexOf("Apple", 3);
+    
 
-		for (let y = 0; y < userdata.users[user_index].characters.length; y++) {
-			// console.log('value of y is ' + y)
-			const character_name = userdata.users[user_index].characters[y].character_name
-			const realm = userdata.users[user_index].characters[y].realm
-			const character_class = userdata.users[user_index].characters[y].character_class
+// 		for (let y = 0; y < userdata.users[user_index].characters.length; y++) {
+// 			// console.log('value of y is ' + y)
+// 			const character_name = userdata.users[user_index].characters[y].character_name
+// 			const realm = userdata.users[user_index].characters[y].realm
+// 			const character_class = userdata.users[user_index].characters[y].character_class
 
-			let row_data = {
-				label: JSON.stringify(character_name + '-' + realm + ' ' + '(' + character_class + ')').replace(/"/g, ''),
-				// this value property is somewhat redundant but we NEED it or the discordjs menu component won't work. It also HAS to be a string
-				value: JSON.stringify(character_name + '-' + realm).replace(/"/g, '')
-			}
+// 			let row_data = {
+// 				label: JSON.stringify(character_name + '-' + realm + ' ' + '(' + character_class + ')').replace(/"/g, ''),
+// 				// this value property is somewhat redundant but we NEED it or the discordjs menu component won't work. It also HAS to be a string
+// 				value: JSON.stringify(character_name + '-' + realm).replace(/"/g, '')
+// 			}
 
-			character_array.push(row_data)
+// 			character_array.push(row_data)
 
-			//if we reach this part of the loop, we're done
-			if (y == userdata.users[user_index].characters.length - 1) {
-				return character_array
-			}
-		}
-		/// end of array logic
+// 			//if we reach this part of the loop, we're done
+// 			if (y == userdata.users[user_index].characters.length - 1) {
+// 				return character_array
+// 			}
+// 		}
+// 		/// end of array logic
 
-	} else {
-		console.log("no record for this user exists")
-		character_array = [{ label: 'NULL', value: 'NULL' }]
-		return character_array
-	}
-}
+// 	} else {
+// 		console.log("no record for this user exists")
+// 		character_array = [{ label: 'NULL', value: 'NULL' }]
+// 		return character_array
+// 	}
+// }
 
 exports.createUserIdArray = createUserIdArray;

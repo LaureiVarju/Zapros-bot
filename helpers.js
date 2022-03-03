@@ -1,4 +1,3 @@
-
 // Creates an array of all user ids ie: ["225812069704925184", "222059182445035522"]
 // createCharacterArrayForMenu() in update.js uses the return value of createUserIdArray() to determine if the user exists in the JSON file, and if so, where
 function createUserIdArray(rawdata) {
@@ -20,7 +19,7 @@ function createUserIdArray(rawdata) {
 	}
 }
 
-// creates an array of all existing character names (and their realm names) for a given user. Used in update.js to populate a menu
+// creates an array of all existing character names (and their realm names) for a given user. Used in update.js to populate the first selection menu
 function createCharacterArrayForMenu(userid, rawdata) {
 	console.log('value of userid ' + userid)
 	const userdata = JSON.parse(rawdata);

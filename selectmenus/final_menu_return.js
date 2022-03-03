@@ -35,10 +35,15 @@ module.exports = {
 			msg.lastIndexOf(")")
 		);
 
-		const userid = interaction.user.id
+		// const userid = interaction.user.id
 
 		//locate this characterin the database, return an index value. first find user
 
+		// var index = //index of the entry
+
+		// if (index !== -1) {
+		// 	items[index] = 1010;
+		// }
 
 		return interaction.reply({ content: `Your key for ${character_name}-${realm_name} has been updated to: ${key_number} [${key_type}]`, ephemeral: true });
 
@@ -48,12 +53,14 @@ module.exports = {
 
 };
 
-//helper functions
 
-function findUserIndex(userid){
 
-}
 
-function findCharacterIndex(charname, realmname){
+// async function getCurrentPeriodNumber() { // we need an async wrapper here to handle our API calls
+// 	const res = await axios.get(periodAPI)
+// 	const current_period = res.data.periods[us_region].current.period
+	
+// 	return current_period
 
-}
+// }
+// await getCurrentPeriodNumber() // if we don't call this with await, then we get some weird behavior

@@ -1,5 +1,12 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
+const helpers = require('../helpers');
+const createUserIdArray = helpers.createUserIdArray
+const findCharacterIndex = helpers.findCharacterIndex
+const fs = require('fs');
+const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+let userdata = JSON.parse(rawdata)
+const util = require('util')
 
 const axios = require('axios')
 
@@ -11,10 +18,7 @@ module.exports = {
 		.addStringOption(option => option.setName('realm').setDescription('your realm name').setRequired(true)),
 
 	async execute(interaction) {
-		// const user = interaction.options.getUser('target');
-		console.log(interaction.user.id)
-		console.log(interaction.user.username)
-		console.log(interaction.options._hoistedOptions)
+
 
 		let userid = interaction.user.id
 		let realm_name = interaction.options._hoistedOptions[1].value
@@ -23,123 +27,117 @@ module.exports = {
 
 		async function checkCharacterStatusandSet() { // we need an async wrapper here to handle our API calls
 
-	
-				// .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+			axios.get(api_character_call)
+				.then((response) => {
 
-			// const res = await axios.get(api_character_call)
+					console.log('no errors')
+					let thumbnail = response.data.thumbnail_url
+					let api_char_name = response.data.name
+					let api_class = response.data.class
+					let api_realm = response.data.realm
 
-			axios.get(api_character_call).then((response) => {
-				console.log('Everything is awesome.');
+					const exampleEmbed = new MessageEmbed()
+						.setColor('#0099ff')
+						.setTitle(`${api_char_name} Added!`)
 
-				console.log(response)
-				console.log(response.data.class)
-				thumbnail = response.data.thumbnail_url
-				api_char_name = response.data.name
-				api_class = response.data.class
+						.setDescription(`Your ${api_class}, ${api_char_name}, has been added`)
+						.setThumbnail(thumbnail)
+						.addFields(
+							{ name: `Set up ${api_char_name}'s key data:`, value: 'Try using /update' },
+							{ name: 'Or add another character:', value: 'use /addcharacter' },
+						)
+						.setTimestamp()
 
-				const exampleEmbed = new MessageEmbed()
-				.setColor('#0099ff')
-				.setTitle(`${api_char_name} Added!`)
-				// .setURL('https://discord.js.org/')
-				// .setAuthor({ name: ${interaction.user.username}, iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
-				.setDescription(`Your ${api_class}, ${api_char_name}, has been added`)
-				.setThumbnail(thumbnail)
-				.addFields(
-					{ name: `Set up ${api_char_name}'s key data:`, value: 'Try using /update' },
-					{ name: 'Or add another character:', value: 'use /addcharacter' },
-					// { name: 'Faction', value: 'Some value here', inline: true },
-					// { name: 'Race', value: 'Some value here', inline: true },
-				)
-				// .addField("Need to add or update key data? Try /update", true)
-				// .setImage(thumbnail)
-				.setTimestamp()
-				return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, embeds: [exampleEmbed], ephemeral: true })
-			}).catch((error) => {
-				console.warn('Not good man :(');
-				// console.log(error.response.data.message) // catching errors from message embed, not axios or raiderapi
-				return interaction.reply({ content: `${error.response.data.message}`, ephemeral: true })
-				// return interaction.reply({ content: `${error}`, ephemeral: true })
-			})
-
-			// const res = axios.get(api_character_call)
-			// 	.catch(function (error) {
-			// 		if (error.response) {
-			// 			// Request made and server responded
-			// 			console.log('in the error.response block')
-			// 			return interaction.reply({ content: `There was an error verifying your character, check your spelling and try again`, ephemeral: true })
-			// 			// console.log(error.response.data);
-			// 			// console.log(error.response.status);
-			// 			// console.log(error.response.headers);
-			// 		} else if (error.request) {
-			// 			// The request was made but no response was received
-			// 			return interaction.reply({ content: 'character verification service did not reply, please try again later' + error.request, ephemeral: true })
-			// 			// console.log(error.request);
-			// 		} else {
-			// 			// Something happened in setting up the request that triggered an Error
-			// 			console.log('Error', error.message);
-			// 			return interaction.reply({ content: 'Something happened in setting up the request that triggered an Error' + error.message, ephemeral: true })
-			// 		}
+					// If we enter this block the character and realm ARE valid
+				
 
 
-			// 	})
-			// 	.try({
+					// Here we're checking to see if the user already exists or not
+					if (createUserIdArray(rawdata).includes(userid) == true) {
 
-			// 		if (res.status == 200) {
-			// 			console.log('this character exists')
-			// 		} else if (res.statusCode == 400) {
-			// 			console.log('mistakes were made')
-			// 		}
-			// 		else {
-			// 			console.log('not enough data?')
-			// 		}
-			// 	}
-			// 	);
+						// Now we're checking to see if this existing user's submitted character already exists in the database
+						if (findCharacterIndex(userid, rawdata, character_name, realm_name) != -1) {
+							return interaction.reply({ content: `You've already added ${api_char_name}! Try '/update' to update ${api_char_name}'s key data, or /delete to remove a character`, ephemeral: true })
+
+						}
+						// If we reach here the user already exists, but the character does not.
+						// Meaning we append the existing character array only
+						let new_char =
+						{
+							"character_name": api_char_name,
+							"character_class": api_class,
+							"key_period": 0,
+							"weekly_key": '',
+							"key_level": 0,
+							"best_role": '',
+							"second_best_role": '',
+							"region": "Americas & Oceanic",
+							"realm": api_realm
+						}
+
+						// we need to figure out where this user exists
+						this_user = createUserIdArray(rawdata).indexOf(userid) // location we need
+					
+
+						userdata.users[this_user].characters.push(new_char)
+						// now save file
+						const writeFile = util.promisify(fs.writeFile)
+						userdata = JSON.stringify(userdata, null, 2);
+						writeFile('../Zapros-bot/key_data.json',userdata )
+
+						return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, embeds: [exampleEmbed], ephemeral: true })
+					}
+
+					//if we're here. we are adding a new user AND a new character
+
+					let new_entry = {
+						"id": 1,
+						"discordid": userid,
+						"characters":
+							[
+								{
+									"character_name": api_char_name,
+									"character_class": api_class,
+									"key_period": 0,
+									"weekly_key": '',
+									"key_level": 0,
+									"best_role": '',
+									"second_best_role": '',
+									"region": "Americas & Oceanic",
+									"realm": api_realm
+								}
+							]
+					}
+
+					userdata.users.push(new_entry)
+					// now save file
+					const writeFile = util.promisify(fs.writeFile)
+					userdata = JSON.stringify(userdata, null, 2);
+					writeFile('../Zapros-bot/key_data.json',userdata )
+
+					
+					return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, embeds: [exampleEmbed], ephemeral: true })
+
+		
+				})
+				.catch(error => {
+					console.warn('Not good man :(')
+					// This will return any raiderio API errors
+					if (error.response != undefined) {
+						return interaction.reply({ content: `${error.response.data.message}`, ephemeral: true })
 
 
+					} else {
+						// This will return ANY errors we get, including discordjs errors
+						console.log(error)
+						return interaction.reply({ content: 'Something went wrong! ' + error, ephemeral: true })
+					}
+				})
 
-
-
-
-		}
-		return await checkCharacterStatusandSet()
-
-
-
-		//success result
-		// {
-		// 	"name": "Vizu",
-		// 	"race": "Draenei",
-		// 	"class": "Shaman",
-		// 	"active_spec_name": "Restoration",
-		// 	"active_spec_role": "HEALING",
-		// 	"gender": "female",
-		// 	"faction": "alliance",
-		// 	"achievement_points": 17525,
-		// 	"honorable_kills": 0,
-		// 	"thumbnail_url": "https://render-us.worldofwarcraft.com/character/elune/111/242307183-avatar.jpg?alt=wow/static/images/2d/avatar/11-1.jpg",
-		// 	"region": "us",
-		// 	"realm": "Elune",
-		// 	"last_crawled_at": "2022-03-02T01:34:23.000Z",
-		// 	"profile_url": "https://raider.io/characters/us/elune/Vizu",
-		// 	"profile_banner": "alliancebanner1"
-		//   }
-
-		//   //bad
-		//   {
-		// 	"statusCode": 400,
-		// 	"error": "Bad Request",
-		// 	"message": "Could not find requested character"
-		//   }
-
-		//check if they exist
-		// check their class
-		// check if they're level 60
-
-
-		// return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, ephemeral: true })
-
-	},
-};
+		} // end of the defined function
+		await checkCharacterStatusandSet()
+	} //end of the async exec block
+};// end of the module
 
 
 

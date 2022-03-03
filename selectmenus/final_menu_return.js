@@ -5,6 +5,10 @@ const helpers = require('../helpers');
 const createUserIdArray = helpers.createUserIdArray // do we need to call this here?
 const findCharacterIndex = helpers.findCharacterIndex
 const util = require('util')
+const axios = require('axios')
+const APIpaths = require('../APIpaths');
+const periodAPI = APIpaths.periodAPI
+const us_region = 0
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
@@ -51,24 +55,24 @@ module.exports = {
 		const discordId = (element) => element == interaction.user.id
 		const user_index = createUserIdArray(rawdata).findIndex(discordId)
 
-		userdata.users[user_index].characters[target_index].key_level = key_number
-		userdata.users[user_index].characters[target_index].weekly_key = key_type
-		userdata.users[user_index].characters[target_index].key_period = 844
+		async function setValuesandPeriodNumber() { // we need an async wrapper here to handle our API calls
+			const res = await axios.get(periodAPI)
+			const current_period = res.data.periods[us_region].current.period
+			
+			 
+			userdata.users[user_index].characters[target_index].key_level = key_number
+			userdata.users[user_index].characters[target_index].weekly_key = key_type
+			userdata.users[user_index].characters[target_index].key_period = current_period
+	
+	
+			const writeFile = util.promisify(fs.writeFile)
+			userdata = JSON.stringify(userdata, null, 2);
+			writeFile('../Zapros-bot/key_data.json',userdata )
+		
+		}
+		await setValuesandPeriodNumber()
 
-
-		const writeFile = util.promisify(fs.writeFile)
-
-		// console.log(userdata[0].characters)
-		userdata = JSON.stringify(userdata, null, 2);
-		writeFile('../Zapros-bot/key_data.json',userdata )
-
-
-		// if (target_index !== -1) {
-		// 	array[target_index] = {object we want to insert};
-
-		// then save
-		// } 
-
+	
 		return interaction.reply({ content: `Your key for ${character_name}-${realm_name} has been updated to: ${key_number} [${key_type}]`, ephemeral: true });
 
 
@@ -82,11 +86,4 @@ module.exports = {
 
 
 
-// async function getCurrentPeriodNumber() { // we need an async wrapper here to handle our API calls
-// 	const res = await axios.get(periodAPI)
-// 	const current_period = res.data.periods[us_region].current.period
-	
-// 	return current_period
-
-// }
-// await getCurrentPeriodNumber() // if we don't call this with await, then we get some weird behavior
+ // if we don't call this with await, then we get some weird behavior

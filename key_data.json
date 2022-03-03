@@ -8,8 +8,8 @@
           "character_name": "Vizu",
           "character_class": "Shaman",
           "key_period": 844,
-          "weekly_key": "DOS",
-          "key_level": "2",
+          "weekly_key": "NW",
+          "key_level": "6",
           "best_role": "Healer",
           "second_best_role": "DPS",
           "region": "Americas & Oceanic",
@@ -30,7 +30,7 @@
     },
     {
       "id": 1,
-      "discordid": "222059182445035522",
+      "discordid": "225812069704925184",
       "characters": [
         {
           "character_name": "Darkenedone",
@@ -46,9 +46,9 @@
         {
           "character_name": "Illusion",
           "character_class": "Mage",
-          "key_period": 843,
-          "weekly_key": "SD",
-          "key_level": 13,
+          "key_period": 844,
+          "weekly_key": "PF",
+          "key_level": "25+++",
           "best_role": "DPS",
           "second_best_role": "none",
           "region": "Americas & Oceanic",

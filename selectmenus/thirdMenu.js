@@ -2,8 +2,6 @@
 const presets = require('../presets');
 const key_level_menu = presets.key_level_menu
 
-
-
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
 const key_level_numbers = new MessageActionRow()

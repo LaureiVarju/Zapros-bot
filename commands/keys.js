@@ -28,9 +28,9 @@ async function getuserdata(){
 
 
 const axios = require('axios')
-const presets = require('../APIpaths');
-const periodAPI = presets.periodAPI
-const affixAPI = presets.affixAPI
+const APIpaths = require('../APIpaths');
+const periodAPI = APIpaths.periodAPI
+const affixAPI = APIpaths.affixAPI
 const us_region = 0
 
 

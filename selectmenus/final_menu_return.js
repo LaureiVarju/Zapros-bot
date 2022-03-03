@@ -1,6 +1,10 @@
 
+const fs = require('fs');
+const rawdata = fs.readFileSync('../Zapros-bot/key_data.json'); // proper call in discord 
 const helpers = require('../helpers');
-const createUserIdArray = helpers.createUserIdArray
+const createUserIdArray = helpers.createUserIdArray // do we need to call this here?
+const findCharacterIndex = helpers.findCharacterIndex
+const util = require('util')
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
@@ -35,15 +39,35 @@ module.exports = {
 			msg.lastIndexOf(")")
 		);
 
-		// const userid = interaction.user.id
+	
 
 		//locate this characterin the database, return an index value. first find user
 
-		// var index = //index of the entry
+		let target_index = findCharacterIndex(interaction.user.id, rawdata, character_name, realm_name) 
+		console.log(`target index is: ${target_index}`)
 
-		// if (index !== -1) {
-		// 	items[index] = 1010;
-		// }
+		let userdata = JSON.parse(rawdata);
+
+		const discordId = (element) => element == interaction.user.id
+		const user_index = createUserIdArray(rawdata).findIndex(discordId)
+
+		userdata.users[user_index].characters[target_index].key_level = key_number
+		userdata.users[user_index].characters[target_index].weekly_key = key_type
+		userdata.users[user_index].characters[target_index].key_period = 844
+
+
+		const writeFile = util.promisify(fs.writeFile)
+
+		// console.log(userdata[0].characters)
+		userdata = JSON.stringify(userdata, null, 2);
+		writeFile('../Zapros-bot/key_data.json',userdata )
+
+
+		// if (target_index !== -1) {
+		// 	array[target_index] = {object we want to insert};
+
+		// then save
+		// } 
 
 		return interaction.reply({ content: `Your key for ${character_name}-${realm_name} has been updated to: ${key_number} [${key_type}]`, ephemeral: true });
 
@@ -52,6 +76,8 @@ module.exports = {
 
 
 };
+
+
 
 
 

@@ -54,9 +54,11 @@ module.exports = {
 				/// end of array logic
 
 			} else {
-				const NOT_IN_DATABASE = `I have no record of you, ${interaction.user.username}! Say "!update" to create an entry`
+				const NOT_IN_DATABASE = `I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!`
 				console.log("no record for this user exists")
-				return NOT_IN_DATABASE
+				let character_array = []
+				character_array[0] = NOT_IN_DATABASE
+				return character_array
 			}
 		}
 
@@ -80,8 +82,9 @@ module.exports = {
 		}
 
 
-
+		if (myKeys()[0] != `I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!` ){
 		return interaction.reply(myKeys().join('\n'))
+		} else return interaction.reply(`I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!`)
 
 	}
 };

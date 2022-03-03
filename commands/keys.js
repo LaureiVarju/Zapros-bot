@@ -14,9 +14,19 @@ module.exports = {
 
 const moment = require('moment')
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
-const userdata = JSON.parse(rawdata);
-const number_of_users = userdata.users.length
+
+// const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+// const userdata = JSON.parse(rawdata);
+// const number_of_users = userdata.users.length
+
+async function getuserdata(){
+	const rawdata2 = fs.readFileSync('../Zapros-bot/key_data.json');
+	const userdata2 = JSON.parse(rawdata2);
+	return userdata2
+}
+
+
+
 const axios = require('axios')
 const presets = require('../APIpaths');
 const periodAPI = presets.periodAPI
@@ -27,6 +37,9 @@ const us_region = 0
 async function reportAllKeys(user) {
 
 	let character_array = []
+	
+	let userdata = await getuserdata()
+	let number_of_users = userdata.users.length
 
 	//outer loop i is set by our overall user level
 	for (let i = 0; i < number_of_users; i++) {

@@ -60,5 +60,34 @@ function createCharacterArrayForMenu(userid, rawdata) {
 	}
 }
 
+// this will find where in the user's character array a targeted character exists, by cross-referencing the character name and realm name provided
+//  we can assume when this is called, that the user DOES exist and DOES have characters 
+function findCharacterIndex(userid, rawdata, character_name, realm_name) {
+	const userdata = JSON.parse(rawdata);
+	let indexOfTargetCharacter = null
+	let indexOfUser = createUserIdArray(rawdata).indexOf(userid)
+	let character_array = userdata.users[indexOfUser].characters
+
+	for (let i = 0; i < character_array.length; i++) {
+
+		// 	search through the character array to find a match for name and realm. This should always return something because these values are being provided
+		// 	from a pre-populated list of existing characters the user has chosen. Even still, we should account for unexpected errors.
+		if (character_array[i].character_name == character_name && character_array[i].realm == realm_name) {
+			// we have a match, grab the index value.
+			indexOfTargetCharacter = i
+		}
+	}
+
+	if (indexOfTargetCharacter != null || NaN) {
+		// console.log(character_array[indexOfTargetCharacter])
+		return indexOfTargetCharacter
+	}
+	else {
+		console.log('indexOfTargetCharacter is null or NaN: ' + indexOfTargetCharacter)
+		return -1
+	}
+}
+
+exports.findCharacterIndex = findCharacterIndex
 exports.createUserIdArray = createUserIdArray
 exports.createCharacterArrayForMenu = createCharacterArrayForMenu

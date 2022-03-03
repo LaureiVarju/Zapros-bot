@@ -1,8 +1,7 @@
 
 const presets = require('../presets');
 const key_level_menu = presets.key_level_menu
-const helpers = require('../helpers');
-const createUserIdArray = helpers.createUserIdArray
+
 
 
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');

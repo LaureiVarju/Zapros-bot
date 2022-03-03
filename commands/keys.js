@@ -6,7 +6,7 @@ module.exports = {
 		.setDescription('Reports all keys'),
 	// populate an array based on JSON data, and spit back the array to the user
 	async execute(interaction) {
-		let results = await reportAllKeys() //returns an object
+		let results = await reportAllKeys(interaction.user.username) //returns an object
 		const array_results = Object.values(results); //turns the object into an array so I can call .join() on the results for better formatting
 		return interaction.reply({ content: array_results.join('\n'), ephemeral: true })
 	}
@@ -14,19 +14,32 @@ module.exports = {
 
 const moment = require('moment')
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
-const userdata = JSON.parse(rawdata);
-const number_of_users = userdata.users.length
+
+// const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+// const userdata = JSON.parse(rawdata);
+// const number_of_users = userdata.users.length
+
+async function getuserdata(){
+	const rawdata2 = fs.readFileSync('../Zapros-bot/key_data.json');
+	const userdata2 = JSON.parse(rawdata2);
+	return userdata2
+}
+
+
+
 const axios = require('axios')
-const presets = require('../APIpaths');
-const periodAPI = presets.periodAPI
-const affixAPI = presets.affixAPI
+const APIpaths = require('../APIpaths');
+const periodAPI = APIpaths.periodAPI
+const affixAPI = APIpaths.affixAPI
 const us_region = 0
 
 
-async function reportAllKeys() {
+async function reportAllKeys(user) {
 
 	let character_array = []
+	
+	let userdata = await getuserdata()
+	let number_of_users = userdata.users.length
 
 	//outer loop i is set by our overall user level
 	for (let i = 0; i < number_of_users; i++) {
@@ -36,7 +49,7 @@ async function reportAllKeys() {
 		// y has to be intialized here and incremented
 		for (let y = 0; y < userdata.users[i].characters.length; y++) {
 			// console.log('value of y is ' + y)
-			async function getPeriodNumber() { // we need an async wrapper here to handle our API calls
+			async function checkPeriodNumber() { // we need an async wrapper here to handle our API calls
 				const res = await axios.get(periodAPI)
 				const current_period = res.data.periods[us_region].current.period
 				const last_recorded_character_key_period = userdata.users[i].characters[y].key_period
@@ -58,7 +71,7 @@ async function reportAllKeys() {
 				}
 
 			}
-			await getPeriodNumber() // if we don't call this with await, then we get some weird behavior
+			await checkPeriodNumber() // if we don't call this with await, then we get some weird behavior
 		}
 
 
@@ -66,12 +79,13 @@ async function reportAllKeys() {
 		if (i == number_of_users - 1) {
 			// console.log("i == number of users - 1")
 			if (character_array.length == 0) {
-				character_array.push("I have no key data this week! Use /update to enter this week's keys")
+				character_array.push(`I have no recent data for any of your characters, ${user}! Try '/update' to update your key(s) data`)
 			}
 
 			// wrapping the last of this in an async function to handle the API calls
 			async function postProcessArray() {
 				// Adding weekly date range
+				if (character_array[0] != `I have no recent data for any of your characters, ${user}! Try '/update' to update your key(s) data`){
 				const week_dates_call = await axios.get(periodAPI)
 				const beginning_date = moment(week_dates_call.data.periods[us_region].current.start).format('MMM Do')
 				const ending_date = moment(week_dates_call.data.periods[us_region].current.end).format('MMM Do')
@@ -81,6 +95,8 @@ async function reportAllKeys() {
 				const weekly_affixes = await axios.get(affixAPI)
 				const affix_string = weekly_affixes.data.title
 				character_array.push(`This week's affixes are: ${affix_string}`)
+				}
+			
 	
 			}
 

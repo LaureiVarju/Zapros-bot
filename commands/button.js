@@ -6,7 +6,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 const row1 = new MessageActionRow().addComponents(
 	new MessageButton()
-		.setCustomId('primary')
+		.setCustomId('primary-test')
 		.setLabel('Tank')
 		.setStyle('PRIMARY'),
 )

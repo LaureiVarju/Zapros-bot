@@ -22,14 +22,18 @@ const row3 = new MessageActionRow().addComponents(
 		.setLabel('DPS')
 		.setStyle('DANGER'),
 )
+
+
+
 module.exports = {
-
-
-
+	
 	data: new SlashCommandBuilder()
-		.setName('button')
-		.setDescription('button'),
+	.setName('button')
+	.setDescription('button'),
+
 	async execute(interaction) {
+
+		
 		// console.log(row1)
 		// console.log(row2)
 		await interaction.reply({ content: 'Pick your preferred role on this character:', components: [row1, row2, row3] });

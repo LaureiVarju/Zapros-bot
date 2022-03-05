@@ -19,7 +19,7 @@ client.selectMenus = new Collection(readdirSync('./selectmenus').filter(isJs).ma
 }))
 
 client.button = new Collection(readdirSync('./buttonpress').filter(isJs).map(path => {
-    const cmd = require(`./selectmenus/${path}`)
+    const cmd = require(`./buttonpress/${path}`)
     return [cmd.customId, cmd]
 }))
 

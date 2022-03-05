@@ -18,9 +18,17 @@ client.selectMenus = new Collection(readdirSync('./selectmenus').filter(isJs).ma
     return [cmd.customId, cmd]
 }))
 
+client.button = new Collection(readdirSync('./buttonpress').filter(isJs).map(path => {
+    const cmd = require(`./buttonpress/${path}`)
+    return [cmd.customId, cmd]
+}))
+
 readdirSync('./events').filter(isJs).forEach(path => {
 	const { name, once, execute } = require(`./events/${path}`)
 	client[once ? 'once' : 'on'](name, execute)
 })
 
-client.login(token);
+client.login(token)
+// const fs = require('fs');
+// image = fs.readFile('image.png')
+// client.user.edit(image)

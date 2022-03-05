@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageActionRow, MessageSelectMenu } = require('discord.js')
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+
 const helpers = require('../helpers');
 const createCharacterArrayForMenu = helpers.createCharacterArrayForMenu
 
@@ -12,6 +12,7 @@ module.exports = {
 		.setDescription("Update your character's key data"),
 		
 	async execute(interaction) {
+		const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 		console.log("inside async execute block of menu.js")
 
 		const character_menu = new MessageActionRow()

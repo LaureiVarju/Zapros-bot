@@ -3,7 +3,7 @@ const helpers = require('../helpers');
 const createUserIdArray = helpers.createUserIdArray
 const findCharacterIndex = helpers.findCharacterIndex
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+
 const util = require('util')
 
 const writeFile = util.promisify(fs.writeFile)
@@ -12,6 +12,7 @@ module.exports = {
     customId: "yes-delete",
    
 	async execute(interaction) {
+        const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 
         console.log(interaction.message.content)
         //grab the user id here

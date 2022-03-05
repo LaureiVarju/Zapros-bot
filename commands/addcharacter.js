@@ -4,8 +4,8 @@ const helpers = require('../helpers');
 const createUserIdArray = helpers.createUserIdArray
 const findCharacterIndex = helpers.findCharacterIndex
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
-let userdata = JSON.parse(rawdata)
+
+
 const util = require('util')
 
 const axios = require('axios')
@@ -18,6 +18,8 @@ module.exports = {
 		.addStringOption(option => option.setName('realm').setDescription('your realm name').setRequired(true)),
 
 	async execute(interaction) {
+		const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
+		let userdata = JSON.parse(rawdata)
 
 
 		let userid = interaction.user.id

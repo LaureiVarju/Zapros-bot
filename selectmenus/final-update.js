@@ -1,6 +1,6 @@
 
 const fs = require('fs');
-const rawdata = fs.readFileSync('../Zapros-bot/key_data.json'); // proper call in discord 
+
 const helpers = require('../helpers');
 const createUserIdArray = helpers.createUserIdArray // do we need to call this here?
 const findCharacterIndex = helpers.findCharacterIndex
@@ -23,6 +23,7 @@ module.exports = {
 		.setDescription('Replies with your input!')
 		.addStringOption(option => option.setName('your key level').setDescription('must be a number between 2-100').setRequired(true)),
 	async execute(interaction) {
+		const rawdata = fs.readFileSync('../Zapros-bot/key_data.json'); // proper call in discord 
 
 
 		const msg = interaction.message.content
@@ -67,7 +68,7 @@ module.exports = {
 	
 			const writeFile = util.promisify(fs.writeFile)
 			userdata = JSON.stringify(userdata, null, 2);
-			writeFile('../Zapros-bot/key_data.json',userdata )
+			await writeFile('../Zapros-bot/key_data.json',userdata )
 		
 		}
 		await setValuesandPeriodNumber()

@@ -1,56 +1,6 @@
 {
   "users": [
     {
-      "id": 0,
-      "discordid": "2258120697049251842",
-      "characters": [
-        {
-          "character_name": "Vizu",
-          "character_class": "Shaman",
-          "key_period": 844,
-          "weekly_key": "NW",
-          "key_level": "6",
-          "best_role": "Healer",
-          "second_best_role": "DPS",
-          "region": "Americas & Oceanic",
-          "realm": "Elune"
-        },
-        {
-          "character_name": "Rhiona",
-          "character_class": "Monk",
-          "key_period": 844,
-          "weekly_key": "TAZ:SW",
-          "key_level": "2",
-          "best_role": "Healer",
-          "second_best_role": "DPS",
-          "region": "Americas & Oceanic",
-          "realm": "Elune"
-        },
-        {
-          "character_name": "Eva",
-          "character_class": "Paladin",
-          "key_period": 0,
-          "weekly_key": "",
-          "key_level": 0,
-          "best_role": "",
-          "second_best_role": "",
-          "region": "Americas & Oceanic",
-          "realm": "Elune"
-        },
-        {
-          "character_name": "Varju",
-          "character_class": "Druid",
-          "key_period": 0,
-          "weekly_key": "",
-          "key_level": 0,
-          "best_role": "",
-          "second_best_role": "",
-          "region": "Americas & Oceanic",
-          "realm": "Elune"
-        }
-      ]
-    },
-    {
       "id": 1,
       "discordid": "222059182445035522",
       "characters": [
@@ -114,23 +64,6 @@
           "second_best_role": "Tank",
           "region": "Americas & Oceanic",
           "realm": "Alexstrasza"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "discordid": "225812069704925184",
-      "characters": [
-        {
-          "character_name": "Vizu",
-          "character_class": "Shaman",
-          "key_period": 0,
-          "weekly_key": "",
-          "key_level": 0,
-          "best_role": "",
-          "second_best_role": "",
-          "region": "Americas & Oceanic",
-          "realm": "Elune"
         }
       ]
     }

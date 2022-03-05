@@ -73,7 +73,7 @@ module.exports = {
 		await setValuesandPeriodNumber()
 
 	
-		return interaction.reply({ content: `Your key for ${character_name}-${realm_name} has been updated to: ${key_number} [${key_type}]`, ephemeral: true });
+		return interaction.update({ content: `Your key for ${character_name}-${realm_name} has been updated to: ${key_number} [${key_type}]`, components: [], ephemeral: true });
 
 
 	},

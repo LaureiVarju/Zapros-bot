@@ -83,8 +83,8 @@ module.exports = {
 
 
 		if (myKeys()[0] != `I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!` ){
-		return interaction.reply(myKeys().join('\n'))
-		} else return interaction.reply(`I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!`)
+		return interaction.reply({content: myKeys().join('\n') ,ephemeral: true})
+		} else return interaction.reply({content: `I have no record of you, ${interaction.user.username}! Try using '/addcharacter' to get started!`, ephemeral: true})
 
 	}
 };

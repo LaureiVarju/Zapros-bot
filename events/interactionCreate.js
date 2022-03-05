@@ -9,7 +9,7 @@ module.exports = {
 		if (interaction.isSelectMenu()) {
 			// console.log("In the interaction.selectMenu() is true block")
 			console.log("menu customId = " + interaction.customId)
-			console.log(interaction.client)
+			// console.log(interaction.client)
 			// console.log( "interaction.client.selectMenus is: " + JSON.stringify(interaction.client.selectMenus))
 			const command = interaction.client.selectMenus.get(interaction.customId);
 			if (!command) return;
@@ -30,11 +30,10 @@ module.exports = {
 				// console.log( "interaction.client.selectMenus is: " + JSON.stringify(interaction.client.selectMenus))
 
 				// console.log(interaction.client)
-				console.log(interaction.client)
+				// console.log(interaction.client)
 	
 				const command = interaction.client.button.get(interaction.customId);
-				console.log("line 32")
-				console.log(command)
+			
 				if (!command) return;
 				try {
 					

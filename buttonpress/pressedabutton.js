@@ -5,11 +5,10 @@ module.exports = {
 	async execute(interaction) {
 
         console.log(interaction)
-        console.log("inside button received")
+        console.log("INSIDE button received")
 
-	    await interaction.reply({ content: 'You pressed a button', ephemeral: true });
+	    await interaction.reply({ content: 'You pressed a button!!', ephemeral: true });
 
 	},
-
     
 };

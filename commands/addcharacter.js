@@ -83,7 +83,12 @@ module.exports = {
 						// now save file
 						const writeFile = util.promisify(fs.writeFile)
 						userdata = JSON.stringify(userdata, null, 2);
-						writeFile('../Zapros-bot/key_data.json',userdata )
+						
+
+						async function wrapper1(){
+							await writeFile('../Zapros-bot/key_data.json',userdata )
+						   }
+						   wrapper1()
 
 						return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, embeds: [exampleEmbed], ephemeral: true })
 					}
@@ -113,7 +118,11 @@ module.exports = {
 					// now save file
 					const writeFile = util.promisify(fs.writeFile)
 					userdata = JSON.stringify(userdata, null, 2);
-					writeFile('../Zapros-bot/key_data.json',userdata )
+					async function wrapper2(){
+					 await writeFile('../Zapros-bot/key_data.json',userdata )
+					}
+					wrapper2()
+					
 
 					
 					return interaction.reply({ content: `Your character, ${character_name}-${realm_name} has been added! Try '/update' to update ${character_name}'s key data or '/addcharacter' to add another character`, embeds: [exampleEmbed], ephemeral: true })

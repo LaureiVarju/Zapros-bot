@@ -29,6 +29,6 @@ readdirSync('./events').filter(isJs).forEach(path => {
 })
 
 client.login(token)
-const fs = require('fs');
-image = fs.readFile('image.png')
-client.user.edit(image)
+// const fs = require('fs');
+// image = fs.readFile('image.png')
+// client.user.edit(image)

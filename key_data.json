@@ -66,6 +66,23 @@
           "realm": "Alexstrasza"
         }
       ]
+    },
+    {
+      "id": 1,
+      "discordid": "225812069704925184",
+      "characters": [
+        {
+          "character_name": "Vizu",
+          "character_class": "Shaman",
+          "key_period": 0,
+          "weekly_key": "",
+          "key_level": 0,
+          "best_role": "",
+          "second_best_role": "",
+          "region": "Americas & Oceanic",
+          "realm": "Elune"
+        }
+      ]
     }
   ]
 }

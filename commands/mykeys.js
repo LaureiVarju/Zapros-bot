@@ -14,6 +14,11 @@ module.exports = {
 		const userdata = JSON.parse(rawdata);
 		const discordId = (element) => element == interaction.user.id;
 
+		// Some (or all) of your key data is out of date. Remember to use /update to update your key data!
+
+		//use period logic to filter out, and if the filter gets hit, change a flag and append the array with a message
+	
+
 		// myKeys functions as follows:
 		// 1. Using a helper method, it creates an array of users
 		// 2. It checks to see if the user exists in the database
@@ -27,6 +32,8 @@ module.exports = {
 				//now make the key array for just this user
 				let character_array = []
 				for (let y = 0; y < userdata.users[user_index].characters.length; y++) {
+
+				
 								
 					row_data = JSON.stringify(userdata.users[user_index].characters[y].weekly_key + ' ' + '[' + userdata.users[user_index].characters[y].key_level + ']' + ' ' + userdata.users[user_index].characters[y].character_name + '-' + userdata.users[user_index].characters[y].realm + ' ' + '(' + userdata.users[user_index].characters[y].character_class + ')')
 					cleaned_string = row_data.replace(/"/g, '')

@@ -8,6 +8,7 @@ const { readdirSync } = require('node:fs')
 
 const isJs = file => file.endsWith('.js')
 
+//defining paths for commands/interactions
 client.commands = new Collection(readdirSync('./commands').filter(isJs).map(path => {
     const cmd = require(`./commands/${path}`)
     return [cmd.data.name, cmd]
@@ -23,12 +24,10 @@ client.button = new Collection(readdirSync('./buttonpress').filter(isJs).map(pat
     return [cmd.customId, cmd]
 }))
 
+//defining path for starting up and handling events
 readdirSync('./events').filter(isJs).forEach(path => {
 	const { name, once, execute } = require(`./events/${path}`)
 	client[once ? 'once' : 'on'](name, execute)
 })
 
 client.login(token)
-// const fs = require('fs');
-// image = fs.readFile('image.png')
-// client.user.edit(image)

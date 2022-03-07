@@ -13,7 +13,7 @@ module.exports = {
 		
 	async execute(interaction) {
 		const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
-		console.log("inside async execute block of menu.js")
+		// console.log("inside async execute block of menu.js")
 
 		const character_menu = new MessageActionRow()
 			.addComponents(

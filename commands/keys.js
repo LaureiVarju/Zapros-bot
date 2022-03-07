@@ -4,7 +4,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('keys')
 		.setDescription('Reports all keys'),
-	// populate an array based on JSON data, and spit back the array to the user
+
 	async execute(interaction) {
 		let results = await reportAllKeys(interaction.user.username) //returns an object
 		const array_results = Object.values(results); //turns the object into an array so I can call .join() on the results for better formatting
@@ -15,17 +15,11 @@ module.exports = {
 const moment = require('moment')
 const fs = require('fs');
 
-// const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
-// const userdata = JSON.parse(rawdata);
-// const number_of_users = userdata.users.length
-
-async function getuserdata(){
+async function getuserdata(){ //why am I calling data like this? was this due to that weird write error I was trying to fix?
 	const rawdata2 = fs.readFileSync('../Zapros-bot/key_data.json');
 	const userdata2 = JSON.parse(rawdata2);
 	return userdata2
 }
-
-
 
 const axios = require('axios')
 const APIpaths = require('../APIpaths');
@@ -33,11 +27,9 @@ const periodAPI = APIpaths.periodAPI
 const affixAPI = APIpaths.affixAPI
 const us_region = 0
 
-
 async function reportAllKeys(user) {
 
 	let character_array = []
-	
 	let userdata = await getuserdata()
 	let number_of_users = userdata.users.length
 
@@ -61,23 +53,19 @@ async function reportAllKeys(user) {
 
 				// only pick up key data that is recent. Out of date key data will be ignored
 				if (current_period != last_recorded_character_key_period) {
-					console.log("Key for " + character_name + " is out of date: " + `${last_recorded_character_key_period} is ${(current_period - last_recorded_character_key_period)} week(s) behind current period ${current_period}`)
+					//console.log("Key for " + character_name + " is out of date: " + `${last_recorded_character_key_period} is ${(current_period - last_recorded_character_key_period)} week(s) behind current period ${current_period}`)
 				}
 				if (current_period == last_recorded_character_key_period) {
-
 					row_data = JSON.stringify(weekly_key + ' ' + '[' + key_level + ']' + ' ' + character_name + '-' + realm + ' ' + '(' + character_class + ')')
 					cleaned_string = row_data.replace(/"/g, '')
 					character_array.push(cleaned_string)
 				}
-
 			}
 			await checkPeriodNumber() // if we don't call this with await, then we get some weird behavior
 		}
 
-
 		// if we reach here, we're ready to post-process and return the array
 		if (i == number_of_users - 1) {
-			// console.log("i == number of users - 1")
 			if (character_array.length == 0) {
 				character_array.push(`I have no recent data for any of your characters, ${user}! Try '/update' to update your key(s) data`)
 			}
@@ -96,10 +84,7 @@ async function reportAllKeys(user) {
 				const affix_string = weekly_affixes.data.title
 				character_array.push(`This week's affixes are: ${affix_string}`)
 				}
-			
-	
 			}
-
 			await postProcessArray() // must be called with await
 			return character_array
 		}

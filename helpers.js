@@ -1,8 +1,6 @@
 // Creates an array of all user ids ie: ["225812069704925184", "222059182445035522"]
-// createCharacterArrayForMenu() in update.js uses the return value of createUserIdArray() to determine if the user exists in the JSON file, and if so, where
+// used to easily determine the index of a user, or if they exist at all
 function createUserIdArray(rawdata) {
-	// console.log("inside CreateUserArray of")
-
 	const userdata = JSON.parse(rawdata);
 	let number_of_users = userdata.users.length
 	let user_array = []
@@ -13,17 +11,15 @@ function createUserIdArray(rawdata) {
 		user_array.push(cleaned_string)
 		//if we reach this part of the loop, we're done
 		if (i == number_of_users - 1) {
-			// console.log("returning from CreateUserArray")
 			return user_array
 		}
 	}
 }
 
-// creates an array of all existing character names (and their realm names) for a given user. Used in update.js to populate the first selection menu
+// creates an array of all existing character names (and their realm names) for a given user. 
+// Used to dynamically populate any menus that feature characters (update.js, delete.js)
 function createCharacterArrayForMenu(userid, rawdata) {
-	console.log('value of userid ' + userid)
 	const userdata = JSON.parse(rawdata);
-	// console.log("inside createCharacterArrayForMenu()")
 	const discordId = (element) => element == userid
 
 
@@ -51,10 +47,9 @@ function createCharacterArrayForMenu(userid, rawdata) {
 				return character_array
 			}
 		}
-		/// end of array logic
 
 	} else {
-		console.log("no record for this user exists")
+		console.log("no record for this user exists - createUserIdArray")
 		character_array = [{ label: 'NULL', value: 'NULL' }]
 		return character_array
 	}
@@ -83,7 +78,7 @@ function findCharacterIndex(userid, rawdata, character_name, realm_name) {
 		return indexOfTargetCharacter
 	}
 	else {
-		console.log('indexOfTargetCharacter is null or NaN: ' + indexOfTargetCharacter)
+		console.log('unexpected value for indexOfTargetCharacter: ' + indexOfTargetCharacter)
 		return -1
 	}
 }

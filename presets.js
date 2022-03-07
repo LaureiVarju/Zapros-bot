@@ -1,9 +1,10 @@
+// not yet used
 const roles = [
     '1 - Tank',
     '2 - Healer',
     '3 - DPS'
 ]
-
+// not yet used
 const keystones = [
 "1 - DOS",
 "2 - HOA",
@@ -14,47 +15,15 @@ const keystones = [
 "7 - SOA",
 "8 - TOP"
 ]
-
-const affixes = [
-    "Fortified",
-    "Tyrannical",
-    "Bolstering",
-    "Bursting",
-    "Inspiring",
-    "Raging",
-    "Sanguine",
-    "Spiteful",
-    "Explosive",
-    "Grievous",
-    "Necrotic",
-    "Quaking",
-    "Storming",
-    "Volcanic",
-    "Tormented" 
-]
-
-const classes = [
-    "1 - Death Knight",
-    "2 - Demon Hunter",
-    "3 - Druid",
-    "4 - Hunter",
-    "5 - Mage",
-    "6 - Monk",
-    "7 - Paladin",
-    "8 - Priest",
-    "9 - Rogue",
-    "10 - Shaman",
-    "11 - Warlock",
-    "12 - Warrior"
-]
-
+// not yet used
 const regions = [
     "1 - Americas & Oceanic",
     "2 - Europe [not supported yet]",
     "3 - Korea [not supported yet",
     "4 - Taiwan [not supported yet]"
 ]
-
+// not yet used
+// maybe track for API realm failure calls, then compare with this list. "Could not find [your realm input]. Did you mean ___?"
 const americas_and_oceanic_realms = [
 "Aegwynn",
 "Aerie Peak",
@@ -340,9 +309,9 @@ const key_menu =
         value: 'TAZ:SG',
     },
     {
-        label: 'TAZ: SW',
+        label: 'TAZ: SoW',
         description: 'Tazavesh: Streets of Wonder',
-        value: 'TAZ:SW',
+        value: 'TAZ:SoW',
     }
 ]
 
@@ -453,8 +422,6 @@ const key_level_menu =
 
 exports.roles = roles;
 exports.keystones = keystones;
-exports.affixes = affixes;
-exports.classes = classes;
 exports.regions = regions;
 exports.americas_and_oceanic_realms = americas_and_oceanic_realms;
 exports.key_menu = key_menu;

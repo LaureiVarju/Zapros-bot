@@ -11,7 +11,6 @@ module.exports = {
 
 function tell_joke() {
 	let random_number = Math.floor(Math.random() * jokes.length);
-	console.log(jokes[random_number])
 	return (jokes[random_number])
 }
 

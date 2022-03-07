@@ -34,9 +34,11 @@ module.exports = {
 		//regular slash command handling
 		} else (interaction.isCommand())
 		
-		if(typeof(commandName) != 'undefined') { 
-
-		console.log(`commandName event: "${interaction.commandName}" from user: ${interaction.user.username}`)}
+		// used to suppress log messages where commandName is undefined, but can't be evaluated without causing an error
+		let test_var = interaction.commandName
+		if(test_var != undefined){
+		console.log(`commandName event: "${test_var}" from user: ${interaction.user.username}`)
+		}
 		
 		const command = interaction.client.commands.get(interaction.commandName); //defined in index.js
 

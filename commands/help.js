@@ -1,8 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-
 const { MessageEmbed } = require('discord.js');
 
-// inside a command, event listener, etc.
 const exampleEmbed = new MessageEmbed()
 	.setColor('#0099ff')
 	.setTitle("Hi, I'm Zapros!")
@@ -16,28 +14,17 @@ const exampleEmbed = new MessageEmbed()
 		{ name: '```/mykeys```', value: 'Reports your up-to-date key data for the week' },
 		{ name: '```/delete```', value: 'Allows you to delete any or all of your own characters' },
 		{ name: '```/joke```', value: 'Tells you a really, really, corny joke' }
-	
 	)
-	// .addField('Inline field title', 'Some value here', true)
 	.setImage('https://c.tenor.com/KC5HIotG-bgAAAAd/cute-robot.gif')
 	.setTimestamp()
-	.setFooter({ text: 'Zapros: v1.0.0-beta made by Vizu'});
-
-
+	.setFooter({ text: 'Zapros: v1.0.0-beta made by Vizu' });
 
 module.exports = {
- data: new SlashCommandBuilder()
-	.setName('help')
-	.setDescription("Explains all of Zapros'commands"),
+	data: new SlashCommandBuilder()
+		.setName('help')
+		.setDescription("Explains all of Zapros'commands"),
 
 	async execute(interaction) {
-
-
-
-		return interaction.reply({ content: `Hi ${interaction.user.username}! 😊 Here's what I can do!`, embeds: [exampleEmbed], ephemeral: true})
-		
+		return interaction.reply({ content: `Hi ${interaction.user.username}! 😊 Here's what I can do!`, embeds: [exampleEmbed], ephemeral: true })
 	},
 };
-
-
-

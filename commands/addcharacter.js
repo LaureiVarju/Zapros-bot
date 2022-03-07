@@ -89,19 +89,19 @@ module.exports = {
 						"id": 1,
 						"discordid": userid,
 						"characters":
-							[
-								{
-									"character_name": api_char_name,
-									"character_class": api_class,
-									"key_period": 0,
-									"weekly_key": '',
-									"key_level": 0,
-									"best_role": '',
-									"second_best_role": '',
-									"region": "Americas & Oceanic",
-									"realm": api_realm
-								}
-							]
+						[
+							{
+								"character_name": api_char_name,
+								"character_class": api_class,
+								"key_period": 0,
+								"weekly_key": '',
+								"key_level": 0,
+								"best_role": '',
+								"second_best_role": '',
+								"region": "Americas & Oceanic",
+								"realm": api_realm
+							}
+						]
 					}
 
 					userdata.users.push(new_entry)

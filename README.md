@@ -1,54 +1,34 @@
 # Zapros-bot
-Zapros-bot is a discord channel bot that interacts with various Warcraft-related APIs
+Zapros is a [Discord](https://discord.com/) channel bot that manages Mythic + key data for World of Warcraft players,
+helping users share information and organize groups week-to-week
 
 ## Description
+Zapros ('query' in Russian) is a NodeJS based channel bot with an object-based database
 
-An in-depth paragraph about your project and overview of use.
-
-## Getting Started
-Note to self. when adding a new slash command, make sure it's mentioned in deploy-commands.js.
-Run deploy-commands.js after setting the server (guildid) in config.json 
-
-### Dependencies
-
-*placeholder 
-### Installing
-
-* placeholder
+### Primary Dependencies
+*[Raider.IO API](https://raider.io/api)
+*[discord.js](https://discord.js.org/#/)
 
 ### Executing program
-
-*placeholder
+Run 'deploy-commands.js' to your target guild id (guilds are servers in Discord)
+Run index.js to connect
 
 ## Help
+Use /help in any server Zapros is active in to see a list of Zapros' commands!
 
-
-```
-
-## Authors
-
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+## Author
+Michelle Dilzell
 
 ## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
+* 1.0.0-beta
     * Initial Release
 
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
 ## Acknowledgments
+Huge shout and thank you to:
+ Benjamin "Jamming" Kirby in the [Discord.js](https://discord.com/invite/djs) development server for patiently walking me through menu-selection handling
 
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+and
+
+"Nicholai" of [Nodeiflux](https://disboard.org/server/425824580918181889) for helping me improve the event driven architecture for this project
+
+I can't thank you two enough <3

@@ -67,13 +67,13 @@ async function reportAllKeys(user) {
 		// if we reach here, we're ready to post-process and return the array
 		if (i == number_of_users - 1) {
 			if (character_array.length == 0) {
-				character_array.push(`I have no recent data for any of your characters, ${user}! Try '/update' to update your key(s) data`)
+				character_array.push(`I have no recent data for keys yet this week! Try '/update' to update your key(s) data`)
 			}
 
 			// wrapping the last of this in an async function to handle the API calls
 			async function postProcessArray() {
 				// Adding weekly date range
-				if (character_array[0] != `I have no recent data for any of your characters, ${user}! Try '/update' to update your key(s) data`){
+				if (character_array[0] != `I have no recent data for keys yet this week! Try '/update' to update your key(s) data`){
 				const week_dates_call = await axios.get(periodAPI)
 				const beginning_date = moment(week_dates_call.data.periods[us_region].current.start).format('MMM Do')
 				const ending_date = moment(week_dates_call.data.periods[us_region].current.end).format('MMM Do')

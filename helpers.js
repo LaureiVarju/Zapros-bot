@@ -78,7 +78,7 @@ function findCharacterIndex(userid, rawdata, character_name, realm_name) {
 		return indexOfTargetCharacter
 	}
 	else {
-		console.log('unexpected value for indexOfTargetCharacter: ' + indexOfTargetCharacter)
+		// console.log('unexpected value for indexOfTargetCharacter: ' + indexOfTargetCharacter)
 		return -1
 	}
 }

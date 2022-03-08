@@ -22,7 +22,7 @@ module.exports = {
 		let userid = interaction.user.id 
 		let realm_name = interaction.options._hoistedOptions[1].value
 		let character_name = interaction.options._hoistedOptions[0].value
-		let api_character_call = `https://raider.io/api/v1/characters/profile?region=us&realm=${realm_name}&name=${character_name}`
+		let api_character_call = `https://raider.io/api/v1/characters/profile?region=us&realm=${realm_name}&name=${encodeURIComponent(character_name)}`
 
 		async function checkCharacterStatusandSet() { // we need an async wrapper here to handle our API calls
 

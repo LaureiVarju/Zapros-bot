@@ -274,6 +274,11 @@ const key_menu =
         value: 'DOS',
     },
     {
+        label: 'GMBT',
+        description: "Tazavesh: So'leah's Gambit",
+        value: 'GMBT',
+    },
+    {
         label: 'HOA',
         description: 'Halls of Atonement',
         value: 'HOA',
@@ -304,14 +309,14 @@ const key_menu =
         value: 'SOA',
     },
     {
-        label: 'TAZ: SG',
-        description: "Tazavesh: So'leah's Gambit",
-        value: 'TAZ:SG',
+        label: 'STRT',
+        description: 'Tazavesh: Streets of Wonder',
+        value: 'STRT',
     },
     {
-        label: 'TAZ: SoW',
-        description: 'Tazavesh: Streets of Wonder',
-        value: 'TAZ:SoW',
+        label: 'TOP',
+        description: 'Theater of Pain',
+        value: 'TOP',
     }
 ]
 

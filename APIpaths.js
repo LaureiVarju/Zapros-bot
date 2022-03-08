@@ -6,6 +6,5 @@ const region = 'us'
 const periodAPI = 'https://raider.io/api/v1/periods'
 const affixAPI = `https://raider.io/api/v1/mythic-plus/affixes?region=${region}&locale=${locale}`
 
-
 exports.periodAPI = periodAPI;
 exports.affixAPI = affixAPI;

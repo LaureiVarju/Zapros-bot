@@ -18,7 +18,6 @@ module.exports = {
 
 		// handling a button press
 		else if (interaction.isButton()) {
-			// console.log("button customId event: " + interaction.customId + " from user: " + interaction.user.username)
 			console.log(`button customId event: "${interaction.customId}" from user: ${interaction.user.username}`)
 			const command = interaction.client.button.get(interaction.customId); //defined in index.js
 

@@ -22,8 +22,7 @@ const regions = [
     "3 - Korea [not supported yet",
     "4 - Taiwan [not supported yet]"
 ]
-// not yet used
-// maybe track for API realm failure calls, then compare with this list. "Could not find [your realm input]. Did you mean ___?"
+
 const americas_and_oceanic_realms = [
 "Aegwynn",
 "Aerie Peak",

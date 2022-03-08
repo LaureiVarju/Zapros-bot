@@ -6,6 +6,10 @@ const findCharacterIndex = helpers.findCharacterIndex
 const fs = require('fs');
 const util = require('util')
 const axios = require('axios')
+const didYouMean = require("didyoumean")
+const presets = require('../presets');
+const americas_and_oceanic_realms = presets.americas_and_oceanic_realms
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -21,6 +25,12 @@ module.exports = {
 		//these can probably be consts?
 		let userid = interaction.user.id 
 		let realm_name = interaction.options._hoistedOptions[1].value
+
+		if (didYouMean(realm_name,americas_and_oceanic_realms) != null)
+		{
+			realm_name = didYouMean(realm_name,americas_and_oceanic_realms)
+		}
+		
 		let character_name = interaction.options._hoistedOptions[0].value
 		let api_character_call = `https://raider.io/api/v1/characters/profile?region=us&realm=${realm_name}&name=${encodeURIComponent(character_name)}`
 

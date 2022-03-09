@@ -3,7 +3,7 @@ Zapros is a [Discord](https://discord.com/) channel bot that manages Mythic + ke
 helping users share information and organize groups week-to-week
 
 ## Description
-Zapros ('query' in Russian) is a NodeJS based channel bot with an object-based database
+Zapros is a NodeJS based channel bot that utilizes event-based architecture and an object-based database
 
 ### Primary Dependencies
 *[Raider.IO API](https://raider.io/api)

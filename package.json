@@ -4,6 +4,8 @@
   "description": "Zapros-bot is a discord channel bot that interacts with various Warcraft-related APIs",
   "main": "non_tokens.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -265,12 +265,68 @@ const americas_and_oceanic_realms = [
 "Winterhoof"
 ]
 
+// Season 3 menu
+// const key_menu =
+// [
+//     {
+//         label: 'DOS',
+//         description: 'De Other Side',
+//         value: 'DOS',
+//     },
+//     {
+//         label: 'GMBT',
+//         description: "Tazavesh: So'leah's Gambit",
+//         value: 'GMBT',
+//     },
+//     {
+//         label: 'HOA',
+//         description: 'Halls of Atonement',
+//         value: 'HOA',
+//     },
+//     {
+//         label: 'MISTS',
+//         description: 'Mists of Tirna Scithe',
+//         value: 'MISTS',
+//     },
+//     {
+//         label: 'NW',
+//         description: 'Necrotic Wake',
+//         value: 'NW',
+//     },
+//     {
+//         label: 'PF',
+//         description: 'Plaguefall',
+//         value: 'PF',
+//     },
+//     {
+//         label: 'SD',
+//         description: 'Sanguine Depths',
+//         value: 'SD',
+//     },
+//     {
+//         label: 'SOA',
+//         description: 'Spires of Ascension',
+//         value: 'SOA',
+//     },
+//     {
+//         label: 'STRT',
+//         description: 'Tazavesh: Streets of Wonder',
+//         value: 'STRT',
+//     },
+//     {
+//         label: 'TOP',
+//         description: 'Theater of Pain',
+//         value: 'TOP',
+//     }
+// ]
+
+// SL Season 4 menu
 const key_menu =
 [
     {
-        label: 'DOS',
-        description: 'De Other Side',
-        value: 'DOS',
+        label: 'GD',
+        description: 'Grimrail Depot',
+        value: 'GD',
     },
     {
         label: 'GMBT',
@@ -278,34 +334,14 @@ const key_menu =
         value: 'GMBT',
     },
     {
-        label: 'HOA',
-        description: 'Halls of Atonement',
-        value: 'HOA',
+        label: 'ID',
+        description: 'Iron Docks',
+        value: 'ID',
     },
     {
-        label: 'MISTS',
-        description: 'Mists of Tirna Scithe',
-        value: 'MISTS',
-    },
-    {
-        label: 'NW',
-        description: 'Necrotic Wake',
-        value: 'NW',
-    },
-    {
-        label: 'PF',
-        description: 'Plaguefall',
-        value: 'PF',
-    },
-    {
-        label: 'SD',
-        description: 'Sanguine Depths',
-        value: 'SD',
-    },
-    {
-        label: 'SOA',
-        description: 'Spires of Ascension',
-        value: 'SOA',
+        label: 'LOWR',
+        description: 'Return to Karazhan: Lower',
+        value: 'LOWR',
     },
     {
         label: 'STRT',
@@ -313,9 +349,19 @@ const key_menu =
         value: 'STRT',
     },
     {
-        label: 'TOP',
-        description: 'Theater of Pain',
-        value: 'TOP',
+        label: 'UPPR',
+        description: 'Return to Karazhan: Upper',
+        value: 'UPPR',
+    },
+    {
+        label: 'WORK',
+        description: 'Operation Mechagon: Workshop',
+        value: 'WORK',
+    },
+    {
+        label: 'YARD',
+        description: 'Operation Mechagon: Junkyard',
+        value: 'YARD',
     }
 ]
 

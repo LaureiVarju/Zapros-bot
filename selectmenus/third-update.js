@@ -2,11 +2,11 @@
 const presets = require('../presets');
 const key_level_menu = presets.key_level_menu
 
-const { MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { ActionRowBuilder, SelectMenuBuilder } = require('discord.js'); 
 
-const key_level_numbers = new MessageActionRow()
+const key_level_numbers = new ActionRowBuilder()
 	.addComponents(
-		new MessageSelectMenu()
+		new SelectMenuBuilder()
 			.setCustomId('key-level')
 			.setPlaceholder('Select a level for your key')
 			.addOptions(key_level_menu)

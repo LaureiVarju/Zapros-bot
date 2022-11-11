@@ -1,6 +1,6 @@
 // const { SlashCommandBuilder } = require('@discordjs/builders');
 const { SlashCommandBuilder } = require('discord.js');
-const { ActionRowBuilder, SelectMenuBuilder} = require('discord.js')
+const { MessageActionRow, SelectMenuBuilder} = require('discord.js')
 const fs = require('fs');
 
 const helpers = require('../helpers');
@@ -9,16 +9,16 @@ const createCharacterArrayForMenu = helpers.createCharacterArrayForMenu
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('update')
-		.setDescription("Update your character's key data"),
+		.setName('modal')
+		.setDescription("calling the modal event"),
 		
 	async execute(interaction) {
 		const rawdata = fs.readFileSync('../Zapros-bot/key_data.json');
 		// console.log("inside async execute block of menu.js")
 
-		const character_menu = new ActionRowBuilder()
+		const character_menu = new MessageActionRow()
 			.addComponents(
-				new SelectMenuBuilder()
+				new MessageSelectMenu()
 					.setCustomId('characterSelected') // this id gets read at second_menu
 					.setPlaceholder('Select Your Character')
 					.addOptions(createCharacterArrayForMenu(interaction.user.id, rawdata)),

@@ -1,16 +1,17 @@
-const { MessageActionRow, MessageButton} = require('discord.js');
+const { ActionRowBuilder, ButtonBuilder} = require('discord.js');
 
-const yes = new MessageActionRow().addComponents(
-	new MessageButton()
+
+const yes = new ActionRowBuilder().addComponents(
+	new ButtonBuilder()
 		.setCustomId('yes-delete')
 		.setLabel('Yes')
-		.setStyle('SUCCESS'),
+		.setStyle('Success'),
 )
-const no = new MessageActionRow().addComponents(
-	new MessageButton()
+const no = new ActionRowBuilder().addComponents(
+	new ButtonBuilder()
 		.setCustomId('no-delete')
 		.setLabel('No')
-		.setStyle('DANGER'),
+		.setStyle('Danger'),
 )
 
 module.exports = {

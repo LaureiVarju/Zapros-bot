@@ -1,4 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+// const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -8,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
 		let results = await reportAllKeys(interaction.user.username) //returns an object
 		const array_results = Object.values(results); //turns the object into an array so I can call .join() on the results for better formatting
-		return interaction.reply({ content: array_results.join('\n'), ephemeral: true })
+		return interaction.channel.send({ content: array_results.join('\n'), ephemeral: false })
 	}
 };
 
@@ -27,7 +28,7 @@ const periodAPI = APIpaths.periodAPI
 const affixAPI = APIpaths.affixAPI
 const us_region = 0
 
-async function reportAllKeys(user) {
+async function reportAllKeys() {
 
 	let character_array = []
 	let userdata = await getuserdata()

@@ -9,7 +9,8 @@ const APIpaths = require('../APIpaths');
 const periodAPI = APIpaths.periodAPI
 const us_region = 0
 
-const { SlashCommandBuilder } = require('@discordjs/builders');
+// const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 

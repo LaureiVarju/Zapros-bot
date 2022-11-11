@@ -1,6 +1,7 @@
 
 	const fs = require('fs');
-	const { REST } = require('@discordjs/rest');
+	// const {  } = require('discordjs');
+	const { REST } = require('discord.js');
 	const { Routes } = require('discord-api-types/v9');
 	const { clientId, guildId, token } = require('./config.json');
 	
@@ -9,6 +10,7 @@
 	
 	for (const file of commandFiles) {
 		const command = require(`./commands/${file}`);
+		console.log(commands)
 		commands.push(command.data.toJSON());
 	}
 	

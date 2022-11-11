@@ -1,5 +1,6 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageSelectMenu } = require('discord.js')
+// const { SlashCommandBuilder } = require('@discordjs/builders');
+const { ActionRowBuilder, SelectMenuBuilder} = require('discord.js')
+const { SlashCommandBuilder } = require('discord.js');
 const fs = require('fs');
 
 const helpers = require('../helpers');
@@ -21,9 +22,9 @@ module.exports = {
 		delete_options.unshift(first_option)
 	
 
-		const delete_menu = new MessageActionRow()
+		const delete_menu = new ActionRowBuilder()
 			.addComponents(
-				new MessageSelectMenu()
+				new SelectMenuBuilder()
 					.setCustomId('delete-selection') // this id gets read at second_menu
 					.setPlaceholder('Select the character you wish to delete')
 					.addOptions(delete_options),

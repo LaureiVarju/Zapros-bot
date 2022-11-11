@@ -1,11 +1,12 @@
 
 const presets = require('../presets');
 const key_menu = presets.key_menu
-const { MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { ActionRowBuilder, SelectMenuBuilder } = require('discord.js');
 
-const key_type_menu = new MessageActionRow()
+
+const key_type_menu = new ActionRowBuilder()
 .addComponents(
-    new MessageSelectMenu()
+    new SelectMenuBuilder()
         .setCustomId('key-name')
         .setPlaceholder('Select a key')
         .addOptions(key_menu)

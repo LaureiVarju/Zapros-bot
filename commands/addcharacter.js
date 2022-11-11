@@ -1,5 +1,6 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+// const { SlashCommandBuilder } = require('@discordjs/builders');
+
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const helpers = require('../helpers');
 const createUserIdArray = helpers.createUserIdArray
 const findCharacterIndex = helpers.findCharacterIndex
@@ -43,7 +44,7 @@ module.exports = {
 					let api_class = response.data.class
 					let api_realm = response.data.realm
 
-					const exampleEmbed = new MessageEmbed()
+					const exampleEmbed = new EmbedBuilder()
 						.setColor('#0099ff')
 						.setTitle(`${api_char_name} Added!`)
 						.setDescription(`Your ${api_class}, ${api_char_name}, has been added`)

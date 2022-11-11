@@ -1,7 +1,9 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+// const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require('discord.js');
+// const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
-const exampleEmbed = new MessageEmbed()
+const exampleEmbed = new EmbedBuilder()
 	.setColor('#0099ff')
 	.setTitle("Hi, I'm Zapros!")
 	.setDescription("I'm a bot that lets you and your friends keep track of your mythic + keys")
